@@ -32,10 +32,12 @@ export default {
 </script>
 
 <template>
-  <h1>Home</h1>
-   <div class="container d-flex flex-wrap justify-content-evenly">
-    <ApartmentCards/>
-   </div>
+  <div class="container">
+    <h1>Home</h1>
+    <div class="d-flex flex-wrap justify-content-evenly">
+      <ApartmentCards/>
+     </div>
+  </div>
 </template>
 
 <style>
