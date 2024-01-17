@@ -16,13 +16,16 @@ export default {
                     <nav>
                         <ul class="d-flex">
                             <li>
-                                <a href="#">Cerca appartamento</a>
+                                <router-link :to="{name: 'home'}">Home</router-link>
                             </li>
                             <li class="mx-4">
-                                <a href="#">Sponsor</a>
+                                <router-link :to="{name: 'ricerca'}">Cerca appartamenti</router-link>
                             </li>
                             <li>
-                                <a href="#">Registrati</a>
+                                <router-link :to="{name: 'accedi'}">Accedi</router-link>
+                            </li>
+                            <li class="ms-4">
+                                <router-link :to="{name: 'registrati'}">Registrati</router-link>
                             </li>
                         </ul>
                     </nav>

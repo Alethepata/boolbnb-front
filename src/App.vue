@@ -14,7 +14,7 @@ export default {
 
 <template>
   <Header/>
-  <!-- <RouterView /> -->
+  <RouterView />
 </template>
 
 <style scoped>
