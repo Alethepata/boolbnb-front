@@ -12,7 +12,7 @@ export default {
     return {
       store,
       position: '',
-      range: 100,
+      range: 20,
       beds: 0,
       rooms: 0,
       latitude: 0,
@@ -42,10 +42,6 @@ export default {
 
     Search(){
 
-      // if(this.requestServices === ''){
-      //   this.isError = true
-      // }else{
-      //   this.isError = false;
         axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
           .then(res =>{
             this.isError = false;
@@ -55,7 +51,7 @@ export default {
             this.isError = true;
             this.apartmentsFiltred = [];
           });
-      // }
+
     },
 
     getServices(){
@@ -103,7 +99,7 @@ export default {
   </div>
 
   <div class="container my-5 d-flex flex-wrap justify-content-evenly">
-    <ApartmentCards :cardObj="this  .apartmentsFiltred"/>
+    <ApartmentCards :cardObj="this.apartmentsFiltred"/>
   </div>
 
 </template>
