@@ -89,18 +89,8 @@ export default {
   </div>
 
   <div class="container my-5">
-    <div v-for="apartment in store.apartmentsFiltred" :key="apartment.id" class="card" style="width: 18rem">
-      <img :src="apartment.img " class="card-img-top" :alt="apartment.title" />
-    <div class="card-body">
-
-      <div class="card-text">
-        <h2>{{ apartment.title }}</h2>
-        <p>{{ apartment.address }}</p>
-      </div>
-    </div>
+    <ApartmentCards :cardObj="store.apartmentsFiltred"/>
   </div>
-  </div>
-
 
 </template>
 

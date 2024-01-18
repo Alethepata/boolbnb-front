@@ -7,12 +7,15 @@ export default {
     return {
       store,
     };
+  },
+  props: {
+    cardObj:Object
   }
 };
 </script>
 
 <template>
-  <div v-for="apartment in store.apartments" :key="apartment.id" class="card" style="width: 18rem">
+  <div v-for="apartment in cardObj" :key="apartment.id" class="card" style="width: 18rem">
       <img :src="apartment.img " class="card-img-top" :alt="apartment.title" />
     <div class="card-body">
 
