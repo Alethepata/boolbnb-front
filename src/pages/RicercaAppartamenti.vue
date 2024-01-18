@@ -45,6 +45,7 @@ export default {
       if(this.requestServices === ''){
         this.isError = true
       }else{
+        this.isError = false;
         axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
           .then(res =>{
             this.apartmentsFiltred = res.data.filteredApartments;
