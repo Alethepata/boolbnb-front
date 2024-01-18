@@ -91,25 +91,25 @@ export default {
   </div>
 
 
-  <div class="container search-bar mb-3">
+  <div class="container search-bar">
+    <h1 class="m-3">Ricerca</h1>
     <div class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="position">
-      <!-- <input type="number" class="form-control" id="rangekm" v-model="range"> -->
-      <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Search</button>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Città"
+        id="city"
+        v-model="position"
+        @keyup.enter="this.GetLatLon()">
+      <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Cerca</button>
     </div>
   </div>
-
-  <div v-if="this.isError" class="container mb-3">
-    <h3 class="text-dark">Nessun risultato</h3>
-  </div>
-<!-- 
-  <div class="container my-5 d-flex flex-wrap justify-content-evenly">
-    <ApartmentCards :cardObj="this.apartmentsFiltred"/>
-  </div> -->
 
   
 </template>
 
-<style>
-
+<style lang="scss" scoped>
+.search-bar{
+  margin: 60px 0;
+}
 </style>
