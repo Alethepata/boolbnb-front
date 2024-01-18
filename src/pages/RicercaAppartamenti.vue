@@ -18,28 +18,38 @@ export default {
       latitude: 0,
       longitude: 0,
       services: [],
-      requestServices:''
+      requestServices:'',
+      isError: false,
+      apartmentsFiltred: []
       }
   },
   methods: {
 
     GetLatLon(){
 
-
+      if(this.latitude == 0 && this.longitude == 0){
+        this.Search();
+      }else{
         axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
         .then(res =>{
           this.latitude = res.data.results[0].position.lat;
           this.longitude = res.data.results[0].position.lon;
           this.Search();
         });
+      }
 
     },
 
     Search(){
-      axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
-        .then(res =>{
-          store.apartmentsFiltred = res.data.filteredApartments;
-        });
+
+      if(this.requestServices === ''){
+        this.isError = true
+      }else{
+        axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
+          .then(res =>{
+            this.apartmentsFiltred = res.data.filteredApartments;
+          });
+      }
     },
 
     getServices(){
@@ -53,19 +63,11 @@ export default {
     saveServices(id){
       this.requestServices+= id + ',';
       console.log(this.requestServices);
-    },
-
-    saveAllServices(){
-
-      this.services.forEach(service =>{
-        this.requestServices+= service + ',';
-      })
     }
 
   },
   mounted(){
     this.getServices();
-    this.saveAllServices();
   }
 }
 </script>
@@ -80,16 +82,22 @@ export default {
     <input type="number" class="form-control" id="rooms" v-model="rooms">
     <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Search</button>
   </div>
-
-  <div  v-for="service in this.services" :key="service.id">
-      <input class="form-check-input" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
-      <label class="form-check-label" :for="service.id">
+  <h5 class="text-dark my-3">Servizi aggiuntivi:</h5>
+  <div class="d-flex flex-wrap">
+    <div  v-for="service in this.services" :key="service.id" class="d-flex">
+      <input class="form-check-input mx-1" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
+      <label class="form-check-label mx-1" :for="service.id">
         {{ service.title }}
       </label>
+    </div>
   </div>
 
-  <div class="container my-5">
-    <ApartmentCards :cardObj="store.apartmentsFiltred"/>
+  <div v-if="this.isError">
+    <p class="text-danger">Devi inserire almeno un servizio per la ricerca!</p>
+  </div>
+
+  <div class="container my-5 d-flex flex-wrap justify-content-evenly">
+    <ApartmentCards :cardObj="this  .apartmentsFiltred"/>
   </div>
 
 </template>
