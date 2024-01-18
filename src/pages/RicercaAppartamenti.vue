@@ -42,15 +42,20 @@ export default {
 
     Search(){
 
-      if(this.requestServices === ''){
-        this.isError = true
-      }else{
-        this.isError = false;
-        axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
+      // if(this.requestServices === ''){
+      //   this.isError = true
+      // }else{
+      //   this.isError = false;
+        axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
           .then(res =>{
+            this.isError = false;
             this.apartmentsFiltred = res.data.filteredApartments;
+          })
+          .catch(error=>{
+            this.isError = true;
+            this.apartmentsFiltred = [];
           });
-      }
+      // }
     },
 
     getServices(){
@@ -74,7 +79,7 @@ export default {
 </script>
 
 <template>
-  <h1>Ricerca</h1>
+  <h1>Ricerca Avanzata</h1>
   
   <div class="d-flex">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="position">
@@ -93,8 +98,8 @@ export default {
     </div>
   </div>
 
-  <div v-if="this.isError">
-    <p class="text-danger">Devi inserire almeno un servizio per la ricerca!</p>
+  <div v-if="this.isError" class="mt-3">
+    <h3 class="text-dark">Nessun risultato</h3>
   </div>
 
   <div class="container my-5 d-flex flex-wrap justify-content-evenly">
