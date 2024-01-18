@@ -23,16 +23,20 @@ export default {
   },
   methods: {
 
-    search(){
+    GetLatLon(){
 
 
         axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
         .then(res =>{
           this.latitude = res.data.results[0].position.lat;
           this.longitude = res.data.results[0].position.lon;
+          this.Search();
         });
 
-        axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
+    },
+
+    Search(){
+      axios.get(store.apiUrl + 'apartments/search-apartments/' + this.rooms + '/' + this.beds + '/'+ this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.requestServices)
         .then(res =>{
           store.apartmentsFiltred = res.data.filteredApartments;
         });
@@ -47,7 +51,6 @@ export default {
     },
 
     saveServices(id){
-      this.requestServices = '';
       this.requestServices+= id + ',';
       console.log(this.requestServices);
     },
@@ -75,7 +78,7 @@ export default {
     <input type="number" class="form-control" id="rangekm" v-model="range">
     <input type="number" class="form-control" id="beds" v-model="beds">
     <input type="number" class="form-control" id="rooms" v-model="rooms">
-    <button class="btn btn-outline-success" type="submit" @click="this.search()">Search</button>
+    <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Search</button>
   </div>
 
   <div  v-for="service in this.services" :key="service.id">
