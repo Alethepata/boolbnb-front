@@ -24,41 +24,59 @@ export default {
       }
   },
   methods: {
+    //Old Version (not working)
+    // GetLatLon(){
+
+    //   if(this.latitude == 0 && this.longitude == 0){
+    //     this.Search();
+    //   }else{
+    //     axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
+    //     .then(res =>{
+    //       this.latitude = res.data.results[0].position.lat;
+    //       this.longitude = res.data.results[0].position.lon;
+    //       this.Search();
+    //     });
+    //   }
+
+    // },
 
     GetLatLon(){
 
-      if(this.latitude == 0 && this.longitude == 0){
+    this.latitude = 0;
+    this.longitude = 0;
+      axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
+      .then(res =>{
+        console.log('Sto prendendo le coordinate');
+        this.latitude = res.data.results[0].position.lat;
+        this.longitude = res.data.results[0].position.lon;
+        console.log(res.data.results,this.latitude,this.longitude);
         this.Search();
-      }else{
-        axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
-        .then(res =>{
-          this.latitude = res.data.results[0].position.lat;
-          this.longitude = res.data.results[0].position.lon;
-          this.Search();
-        });
-      }
+      });
 
-    },
+
+},
+
 
     Search(){
+      axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
+        .then(res =>{
+          console.log('Search() success');
+          this.isError = false;
+          this.apartmentsFiltred = res.data.filteredApartments;
+          console.log(this.apartmentsFiltred);
+        })
+        .catch(error=>{
+          this.isError = true;
+          this.apartmentsFiltred = [];
+        });
 
-        axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
-          .then(res =>{
-            this.isError = false;
-            this.apartmentsFiltred = res.data.filteredApartments;
-          })
-          .catch(error=>{
-            this.isError = true;
-            this.apartmentsFiltred = [];
-          });
-
-    },
+},
 
     getServices(){
       axios.get(store.apiUrl + 'services')
       .then(res =>{
         this.services = res.data.services;
-        console.log(this.services);
+        // console.log(this.services);
       })
     },
 
@@ -70,6 +88,13 @@ export default {
   },
   mounted(){
     this.getServices();
+    const apartments = store.apartmentsFounded;
+    const isError = store.apiError;
+    console.log(apartments,isError);
+    if(apartments != null && isError !=null){
+      this.apartmentsFiltred = apartments;
+      this.isError = isError;
+    }
   }
 }
 </script>

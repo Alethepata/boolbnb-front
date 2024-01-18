@@ -6,5 +6,7 @@ export const store = reactive({
     tomTomApiUrl: 'https://api.tomtom.com/search/2/geocode/',
     tomTomApiKey: '5SpDBwX41WJf17bsPmyNJnysKu2nuS3l',
     latitude: null,
-    longitude: null
+    longitude: null,
+    apartmentsFounded: [],
+    apiError: false
 });
