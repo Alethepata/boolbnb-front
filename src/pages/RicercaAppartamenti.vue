@@ -24,22 +24,6 @@ export default {
       }
   },
   methods: {
-    //Old Version (not working)
-    // GetLatLon(){
-
-    //   if(this.latitude == 0 && this.longitude == 0){
-    //     this.Search();
-    //   }else{
-    //     axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
-    //     .then(res =>{
-    //       this.latitude = res.data.results[0].position.lat;
-    //       this.longitude = res.data.results[0].position.lon;
-    //       this.Search();
-    //     });
-    //   }
-
-    // },
-
     GetLatLon(){
 
     this.latitude = 0;
