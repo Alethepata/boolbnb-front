@@ -44,12 +44,13 @@ export default {
 
     this.latitude = 0;
     this.longitude = 0;
+    this.position = store.position;
       axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
       .then(res =>{
-        console.log('Sto prendendo le coordinate');
+        // console.log('Sto prendendo le coordinate');
         this.latitude = res.data.results[0].position.lat;
         this.longitude = res.data.results[0].position.lon;
-        console.log(res.data.results,this.latitude,this.longitude);
+        // console.log(res.data.results,this.latitude,this.longitude);
         this.Search();
       });
 
@@ -60,10 +61,10 @@ export default {
     Search(){
       axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
         .then(res =>{
-          console.log('Search() success');
+          // console.log('Search() success');
           this.isError = false;
           this.apartmentsFiltred = res.data.filteredApartments;
-          console.log(this.apartmentsFiltred);
+          // console.log(this.apartmentsFiltred);
         })
         .catch(error=>{
           this.isError = true;
@@ -82,7 +83,7 @@ export default {
 
     saveServices(id){
       this.requestServices+= id + ',';
-      console.log(this.requestServices);
+      // console.log(this.requestServices);
     }
 
   },
@@ -90,7 +91,7 @@ export default {
     this.getServices();
     const apartments = store.apartmentsFounded;
     const isError = store.apiError;
-    console.log(apartments,isError);
+    // console.log(apartments,isError);
     if(apartments != null && isError !=null){
       this.apartmentsFiltred = apartments;
       this.isError = isError;
@@ -103,7 +104,7 @@ export default {
   <h1>Ricerca Avanzata</h1>
   
   <div class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="position">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="store.position">
     <input type="number" class="form-control" id="rangekm" v-model="range">
     <input type="number" class="form-control" id="beds" v-model="beds">
     <input type="number" class="form-control" id="rooms" v-model="rooms">

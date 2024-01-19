@@ -76,8 +76,7 @@ export default {
   },
   mounted() {
     this.getApi(store.apiUrl + 'apartments')
-
-
+    store.position = '';
   }
 
 }
