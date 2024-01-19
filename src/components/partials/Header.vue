@@ -6,10 +6,10 @@ export default {
 
 <template>
     <header>
-        <div class="container d-flex justify-content-between my-3">
+        <div class="container d-flex justify-content-between">
                 <div class="logo">
                   <p>
-                    logo
+                    <img src="/public/Boolbnb logo.png" alt="">
                   </p>
                 </div>
                 <div class="navbar">
@@ -35,6 +35,27 @@ export default {
     </header>
 </template>
 
-<style>
+<style lang="scss" scoped>
+
+header {
+    height: 60px;
+    background-color:#F6F1F1;
+    border-bottom: 1px solid #146C94 ;
+    .logo {
+        img {
+            width: 20%;
+            padding: 3px;
+        }
+    }
+    .navbar {
+        ul {
+            li {
+                a {
+                    color: #146C94;
+                }
+            }
+        }
+    }
+}
 
 </style>
