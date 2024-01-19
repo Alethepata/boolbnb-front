@@ -23,6 +23,7 @@ name: 'Jumbotron',
 
         this.latitude = 0;
         this.longitude = 0;
+        this.position = store.position;
             axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
             .then(res =>{
             // console.log('Sto prendendo le coordinate');
@@ -58,7 +59,7 @@ name: 'Jumbotron',
                 // params: {apartments: this.apartmentsFiltred, isError: this.isError }, // Dati che desideri passare
             });
             });
-        }, 
+        },
     }    
 };
 </script>
@@ -73,7 +74,7 @@ name: 'Jumbotron',
                 type="search"
                 placeholder="Città"
                 id="city"
-                v-model="position"
+                v-model="store.position"
                 @keyup.enter="this.GetLatLon()">
                 <button class="btn btn-outline" type="submit" @click="this.GetLatLon()">Cerca</button>
             </div>
