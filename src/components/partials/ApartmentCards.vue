@@ -5,7 +5,7 @@ export default {
   name: 'ApartmentCards',
   data() {
     return {
-      store,
+      store
     };
   },
   props: {
@@ -22,6 +22,7 @@ export default {
       <div class="card-text">
         <h2>{{ apartment.title }}</h2>
         <p>{{ apartment.address }}</p>
+        <router-link :to="{name: 'apartment-detail', params:{slug: apartment.slug}}" class="btn btn-primary w-50 m-2">Dettaglio</router-link>
       </div>
     </div>
   </div>

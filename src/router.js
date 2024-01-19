@@ -5,6 +5,7 @@ import RicercaAppartamenti from './pages/RicercaAppartamenti.vue';
 import Accedi from './pages/Accedi.vue';
 import Registrati from './pages/Registrati.vue';
 import Error404 from './pages/Error404.vue';
+import ApartmentDetail from './pages/ApartmentDetail.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -31,6 +32,13 @@ const router = createRouter({
             name: 'registrati',
             component: Registrati,
         },
+
+        {
+            path: '/apartment-detail/:slug',
+            name: 'apartment-detail',
+            component: ApartmentDetail,
+        },
+
         {
             path: '/:pathMatch(.*)*',
             component: Error404,
