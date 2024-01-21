@@ -11,6 +11,7 @@ export default {
       apartment: {},
       email: "",
       message: "",
+      success: false
     };
   },
   methods: {
@@ -23,18 +24,16 @@ export default {
     },
 
     sendForm() {
-      const data = {
-        email: this.email,
-        message: this.message,
-      };
+    
 
-        axios.get(store.apiUrl + "send_email/" + data)
+        axios.get(store.apiUrl + "send-message/" + this.apartment.id + "/" + this.email + "/" + this.message)
         .then((res) => {
           console.log(res.data);
+          this.success = res.data.success;
+          this.email = '';
+          this.message = '';
         })
-        .catch((err) => {
-          console.log(err.message);
-        });
+
     },
   },
   computed: {
@@ -70,6 +69,8 @@ export default {
       </div>
     </div>
     <div>
+
+
       <form @submit.prevent="sendForm()">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label"
@@ -95,6 +96,12 @@ export default {
         </div>
         <button type="submit" class="btn btn-primary">Invio</button>
       </form>
+
+      <div v-if="success">
+        <h2 class="text-success">Messaggio inviato con successo!</h2>
+      </div>
+
+
     </div>
   </div>
 </template>
