@@ -60,6 +60,60 @@ name: 'Jumbotron',
             });
             });
         },
+        getApi() {
+            const search = store.position.trim();
+
+            if (search.length < 4) return;
+
+            axios.get(`${store.tomTomApiUrl}${encodeURIComponent(search)}.json?key=${store.tomTomApiKey}`)
+                .then(response => {
+                    if (response.data.results.length > 0) {
+                        const niceResults = response.data.results.map((result) => ({
+                            address: {
+                                freeformAddress: result.address.freeformAddress,
+                            },
+                            position: result.position
+                        }));
+                        this.updateAutocompleteList(niceResults);
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore nella chiamata API di TomTom:', error);
+                });
+
+        },
+
+        updateAutocompleteList(results) {
+            // Cancella l'elenco precedente
+            const list = document.getElementById('autocompleteList');
+            list.innerHTML = '';
+
+            // Aggiungi i nuovi suggerimenti all'elenco
+            results.forEach(result => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+
+                //active al passaggio del mouse
+                listItem.addEventListener("mouseover", function() {
+                    this.classList.add("active");
+                });
+                listItem.addEventListener("mouseout", function() {
+                    this.classList.remove("active");
+                });
+                //
+
+                listItem.textContent = result.address.freeformAddress;
+                // Aggiungi un gestore di eventi per gestire la selezione di un suggerimento
+                listItem.addEventListener('click', function() {
+                    store.position = result.address.freeformAddress;
+                    list.innerHTML =
+                        '';
+                });
+
+                list.appendChild(listItem);
+            });
+        }
+
     }    
 };
 </script>
@@ -75,9 +129,17 @@ name: 'Jumbotron',
                 placeholder="Città"
                 id="city"
                 v-model="store.position"
-                @keyup.enter="this.GetLatLon()">
+                @keyup = 'this.getApi()'
+                @keyup.enter="this.GetLatLon()"
+                autocomplete="off"
+                list="countrydata">
+                <ul
+                    id='autocompleteList'
+                    class="list-group">
+                </ul>
                 <button class="btn btn-outline" type="submit" @click="this.GetLatLon()">Cerca</button>
             </div>
+           
         </div>
 
     </div>
@@ -99,11 +161,17 @@ name: 'Jumbotron',
         width: 40%;
         height: 70%;
         border-radius: 30px;
+        #autocompleteList{
+            width: calc(100% - 40px);
+            position: absolute;
+            z-index: 999;
+        }
         h1 {
             color: #146C94;
             text-align: center;
         }
         .bar {
+            position: relative;
             width: 100%;
             margin: auto;
             text-align: center;

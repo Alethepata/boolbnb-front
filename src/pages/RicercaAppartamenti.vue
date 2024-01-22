@@ -68,7 +68,60 @@ export default {
     saveServices(id){
       this.requestServices+= id + ',';
       // console.log(this.requestServices);
-    }
+    },
+    getApi() {
+            const search = store.position.trim();
+
+            if (search.length < 4) return;
+
+            axios.get(`${store.tomTomApiUrl}${encodeURIComponent(search)}.json?key=${store.tomTomApiKey}`)
+                .then(response => {
+                    if (response.data.results.length > 0) {
+                        const niceResults = response.data.results.map((result) => ({
+                            address: {
+                                freeformAddress: result.address.freeformAddress,
+                            },
+                            position: result.position
+                        }));
+                        this.updateAutocompleteList(niceResults);
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore nella chiamata API di TomTom:', error);
+                });
+
+        },
+
+        updateAutocompleteList(results) {
+            // Cancella l'elenco precedente
+            const list = document.getElementById('autocompleteList');
+            list.innerHTML = '';
+
+            // Aggiungi i nuovi suggerimenti all'elenco
+            results.forEach(result => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+
+                //active al passaggio del mouse
+                listItem.addEventListener("mouseover", function() {
+                    this.classList.add("active");
+                });
+                listItem.addEventListener("mouseout", function() {
+                    this.classList.remove("active");
+                });
+                //
+
+                listItem.textContent = result.address.freeformAddress;
+                // Aggiungi un gestore di eventi per gestire la selezione di un suggerimento
+                listItem.addEventListener('click', function() {
+                    store.position = result.address.freeformAddress;
+                    list.innerHTML =
+                        '';
+                });
+
+                list.appendChild(listItem);
+            });
+        }
 
   },
   mounted(){
@@ -85,14 +138,46 @@ export default {
 </script>
 
 <template>
-  <h1>Ricerca Avanzata</h1>
-  
+  <div class="container my-5">
+    <h1>Ricerca Avanzata</h1>
+
+  <div class="row row-cols-5">
+
+    <div class="col inputSearch">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        @keyup = 'this.getApi()'
+        list="countrydata"
+        autocomplete="off"
+        v-model="store.position">
+
+      <ul id="autocompleteList"
+          class="list-group">
+      </ul>
+    </div>
+
+    <div class="col">
+      <input type="number" class="form-control" id="rangekm" v-model="range">
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" id="beds" v-model="beds">
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" id="rooms" v-model="rooms">
+    </div>
+    <div class="col">
+      <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Search</button>
+    </div>
+
+
+
+  </div>
+  <!-- servizi -->
   <div class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="store.position">
-    <input type="number" class="form-control" id="rangekm" v-model="range">
-    <input type="number" class="form-control" id="beds" v-model="beds">
-    <input type="number" class="form-control" id="rooms" v-model="rooms">
-    <button class="btn btn-outline-success" type="submit" @click="this.GetLatLon()">Search</button>
+
   </div>
   <h5 class="text-dark my-3">Servizi aggiuntivi:</h5>
   <div class="d-flex flex-wrap">
@@ -112,8 +197,18 @@ export default {
     <ApartmentCards :cardObj="this.apartmentsFiltred"/>
   </div>
 
+  </div>
+  
 </template>
 
-<style>
+<style lang="scss" scoped>
+.inputSearch{
+  position: relative;
+  #autocompleteList{
+            width: 100%;
+            position: absolute;
+            z-index: 999;
+        }
+}
 
 </style>
