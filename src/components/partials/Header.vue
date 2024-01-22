@@ -22,10 +22,12 @@ export default {
                                 <router-link :to="{name: 'ricerca'}">Cerca appartamenti</router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'accedi'}">Accedi</router-link>
+                                <!-- <router-link :to="{name: 'accedi'}">Accedi</router-link> -->
+                                <a href="http://127.0.0.1:8000/login">Accedi</a>
                             </li>
                             <li class="ms-4">
-                                <router-link :to="{name: 'registrati'}">Registrati</router-link>
+                                <!-- <router-link :to="{name: 'registrati'}">Registrati</router-link> -->
+                                <a href="http://127.0.0.1:8000/register">Registrati</a>
                             </li>
                         </ul>
                     </nav>
