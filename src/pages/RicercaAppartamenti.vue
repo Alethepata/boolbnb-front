@@ -18,7 +18,7 @@ export default {
       latitude: 0,
       longitude: 0,
       services: [],
-      requestServices:'',
+      requestServices:[],
       isError: false,
       apartmentsFiltred: []
       }
@@ -66,8 +66,13 @@ export default {
     },
 
     saveServices(id){
-      this.requestServices+= id + ',';
-      // console.log(this.requestServices);
+
+      if(this.requestServices.includes(id)){
+        this.requestServices.pop(id);
+      }else{
+        this.requestServices.push(id);
+      }
+      console.log(this.requestServices);
     },
     getApi() {
             const search = store.position.trim();
