@@ -121,12 +121,12 @@ name: 'Jumbotron',
 <template>
     <div class="jumbotron">
         <div class="search-bar">
-            <h1>Il tuo Appartamento</h1>
+            <h1>Trova l'alloggio che fa per te</h1>
             <div class="bar">
                 <input
                 class="form-control me-2"
                 type="search"
-                placeholder="Città"
+                placeholder="Inserisci l'indirizzo"
                 id="city"
                 v-model="store.position"
                 @keyup = 'this.getApi()'
@@ -155,8 +155,6 @@ name: 'Jumbotron',
     height: 600px;
     .search-bar {
         margin: 0 auto;
-        background-color: #f6f1f1b1;
-        border: 2px solid #146C94;
         padding: 50px;
         width: 40%;
         height: 70%;
@@ -177,13 +175,14 @@ name: 'Jumbotron',
             text-align: center;
             padding: 20px;
             input {
+                background-color: #F6F1F1;
                 border: 2px solid #146C94;
                 height: 60px;
-                background-color: rgba(255, 255, 255, 0);
             }
             button {
                 margin: 20px;
-                color: #146C94;
+                color: #F6F1F1;
+                border: 1px solid #F6F1F1;
                 &:hover {
                     background-color: #19A7CE;
                 }
