@@ -146,82 +146,122 @@ export default {
 <template>
   <div class="container my-5">
     
-    <h1>Ricerca Avanzata</h1>
-    <div class="high-filter d-flex ">
-      <div class="filter-side">
-        <div class="col-8 inputSearch">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            @keyup = 'this.getApi()'
-            list="countrydata"
-            autocomplete="off"
-            v-model="store.position">
-    
-          <ul id="autocompleteList"
-              class="list-group">
-          </ul>
-        </div>
-    
-        <div class="col-4 pt-3">
-          <input type="number" class="form-control" id="rangekm" v-model="range">
-        </div>
-        <div class="col-4 pt-3">
-          <input type="number" class="form-control" id="beds" v-model="beds">
-        </div>
-        <div class="col-4 pt-3">
-          <input type="number" class="form-control" id="rooms" v-model="rooms">
-        </div>
-        <div class="col-4 pt-5">
-          <button class="btn btn-outline-primary" type="submit" @click="this.GetLatLon()">Search</button>
-        </div>
-      </div>
+    <div class="main-box">
 
-      <div class="service-side">
-        <h5 class="text-dark my-3">Servizi aggiuntivi:</h5>
-        <div class="d-flex flex-wrap">
-          <div  v-for="service in this.services" :key="service.id" class="d-flex">
-            <input class="form-check-input mx-1" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
-            <label class="form-check-label mx-1" :for="service.id">
-              {{ service.title }}
-            </label>
+      <h1>Ricerca Avanzata</h1>
+
+      <div class="high-filter d-flex ">
+
+        <div class="filter-side">
+
+          <div class="col-8 inputSearch">
+            <label for="search">Dove?</label>
+            <input
+              id="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              @keyup = 'this.getApi()'
+              list="countrydata"
+              autocomplete="off"
+              v-model="store.position">
+      
+            <ul id="autocompleteList"
+                class="list-group">
+            </ul>
           </div>
+    
+          <div class="col-4 pt-3">
+            <label for="rangekm">Raggio di ricerca (Km)</label>
+            <input type="number" class="form-control" id="rangekm" v-model="range">
+          </div>
+
+          <div class="col-4 pt-3">
+            <label for="beds">Numero di Letti</label>
+            <input type="number" class="form-control" id="beds" v-model="beds">
+          </div>
+
+          <div class="col-4 pt-3">
+            <label for="rooms">Numero di Stanze</label>
+            <input type="number" class="form-control" id="rooms" v-model="rooms">
+          </div>
+
+          <div class="col-4 pt-5">
+            <button class="btn btn-outline-primary" type="submit" @click="this.GetLatLon()">Cerca</button>
+          </div>
+
         </div>
+
+        <div class="service-side">
+
+          <h5 class="text-dark my-3">Servizi aggiuntivi:</h5>
+
+          <div class="d-flex flex-wrap">
+
+            <div  v-for="service in this.services" :key="service.id" class="d-flex">
+              <input class="form-check-input mx-1" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
+              <label class="form-check-label mx-1" :for="service.id">
+                {{ service.title }}
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+      
       </div>
-  </div>
 
-  <div v-if="this.isError" class="mt-3">
-    <h3 class="text-dark">Nessun risultato</h3>
-  </div>
+    </div>
 
-  <div class="container my-5 d-flex flex-wrap justify-content-evenly">
-    <ApartmentCards :cardObj="this.apartmentsFiltred"/>
-  </div>
+    <div class="container-fluid results-container">
+      <div v-if="this.isError" class="mt-3">
+        <h3 class="text-dark m-0">Nessun risultato</h3>
+      </div>
 
-  </div>
+      
+      <div class="container my-5 d-flex flex-wrap justify-content-evenly">
+        <ApartmentCards :cardObj="this.apartmentsFiltred"/>
+      </div>
+    </div>
+
+    
+    
+    
+
+    </div>
   
 </template>
 
 <style lang="scss" scoped>
-.inputSearch{
-  position: relative;
-  #autocompleteList{
-            width: 100%;
-            position: absolute;
-            z-index: 999;
-        }
+.main-box{
+  background-color: white;
+  border: 2px solid #146C94;
+  border-radius: 30px;
+  padding: 50px;
+  .inputSearch{
+    position: relative;
+    #autocompleteList{
+              width: 100%;
+              position: absolute;
+              z-index: 999;
+          }
+  }
+  .filter-side {
+    width: 50%;
+    // padding: 50px;
+  }
+
+
+  .service-side {
+    width: 50%;
+    // padding: 50px;
+  }
 }
-.filter-side {
-  width: 50%;
+
+.results-container{
   padding: 50px;
 }
 
-
-.service-side {
-  width: 50%;
-  padding: 50px;
-}
 
 </style>
