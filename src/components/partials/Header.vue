@@ -26,7 +26,8 @@ export default {
                             </li>
                             <li>
                                 <!-- <router-link :to="{name: 'accedi'}">Accedi</router-link> -->
-                                <a href="http://127.0.0.1:8000/login">Accedi</a>
+
+                                <a href="http://127.0.0.1:8000/admin">Accedi</a>
                             </li>
                             <li class="ms-4">
                                 <!-- <router-link :to="{name: 'registrati'}">Registrati</router-link> -->
