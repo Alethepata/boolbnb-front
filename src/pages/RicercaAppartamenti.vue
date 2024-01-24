@@ -158,7 +158,7 @@ export default {
             <label for="search">Dove?</label>
             <input
               id="search"
-              class="form-control me-2"
+              class="form-control me-2 border-blue"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -174,21 +174,24 @@ export default {
     
           <div class="col-4 pt-3">
             <label for="rangekm">Raggio di ricerca (Km)</label>
-            <input type="number" class="form-control" id="rangekm" v-model="range">
+            <input type="text" class="form-control select border-none" id="rangekm" v-model="range">
+            <input type="range" class="form-range custom-range" min="20" max="200" step="20" id="rangekm" v-model="range">
           </div>
 
           <div class="col-4 pt-3">
             <label for="beds">Numero di Letti</label>
-            <input type="number" class="form-control" id="beds" v-model="beds">
+            <input type="text" class="form-control select border-none" id="beds" v-model="beds">
+            <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="beds" v-model="beds">
           </div>
 
           <div class="col-4 pt-3">
             <label for="rooms">Numero di Stanze</label>
-            <input type="number" class="form-control" id="rooms" v-model="rooms">
+            <input type="text" class="form-control select border-none" id="rooms" v-model="rooms">
+            <input type="range" class="form-range custom-range" min="0" max="20" step="1" id="rooms" v-model="rooms">
           </div>
 
           <div class="col-4 pt-5">
-            <button class="btn btn-outline-primary" type="submit" @click="this.GetLatLon()">Cerca</button>
+            <button class="btn btn-outline-primary border-blue" type="submit" @click="this.GetLatLon()">Cerca</button>
           </div>
 
         </div>
@@ -199,8 +202,8 @@ export default {
 
           <div class="d-flex flex-wrap">
 
-            <div  v-for="service in this.services" :key="service.id" class="d-flex">
-              <input class="form-check-input mx-1" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
+            <div  v-for="service in this.services" :key="service.id" class="d-flex service">
+              <input class="form-check-input mx-1 border-blue" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
               <label class="form-check-label mx-1" :for="service.id">
                 {{ service.title }}
               </label>
@@ -239,6 +242,9 @@ export default {
   border: 2px solid #146C94;
   border-radius: 30px;
   padding: 50px;
+  .border-blue {
+      border: 2px solid #146C94;
+    }
   .inputSearch{
     position: relative;
     #autocompleteList{
@@ -249,13 +255,33 @@ export default {
   }
   .filter-side {
     width: 50%;
-    // padding: 50px;
+    .custom-range::-moz-range-thumb {
+      background: #146C94;
+    }
+    .border-none {
+      border: none;
+    }
+
+    
+    .select {
+      text-align: center;
+      pointer-events: none;
+    }
+
+    button {
+      color: #146C94;
+      &:hover {
+        background-color: #AFD3E2;
+      }
+    }
   }
 
 
   .service-side {
     width: 50%;
-    // padding: 50px;
+    .service {
+      width: 50%;
+    }
   }
 }
 

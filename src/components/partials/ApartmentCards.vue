@@ -28,5 +28,16 @@ export default {
   </div>
 </template>
 
-<style>
+<style style lang="scss" scoped>
+
+.standard {
+  color: brown;
+}
+.silver {
+  color:silver;
+}
+.gold {
+  color:gold;
+}
+
 </style>
