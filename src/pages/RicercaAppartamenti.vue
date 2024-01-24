@@ -72,6 +72,7 @@ export default {
       }else{
         this.requestServices.push(id);
       }
+      this.Search();
       console.log(this.requestServices);
     },
     getApi() {
