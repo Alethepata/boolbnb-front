@@ -8,13 +8,16 @@ export default {
     <header>
         <div class="container d-flex justify-content-between">
                 <div class="logo">
-                  <p>
-                    <img src="/public/Boolbnb logo.png" alt="">
-                  </p>
+                    <div>
+                        <router-link :to="{name: 'home'}">
+                            <img src="/public/Boolbnb logo.png" alt="">
+                        </router-link>
+                        
+                    </div>
                 </div>
                 <div class="navbar">
                     <nav>
-                        <ul class="d-flex">
+                        <ul class="d-flex align-items-center">
                             <li>
                                 <router-link :to="{name: 'home'}">Home</router-link>
                             </li>
@@ -51,6 +54,8 @@ header {
     }
     .navbar {
         ul {
+            margin: 0;
+            padding: 0;
             li {
                 a {
                     color: #146C94;
