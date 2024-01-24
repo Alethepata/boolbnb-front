@@ -11,7 +11,8 @@ export default {
       apartment: {},
       email: "",
       message: "",
-      success: false
+      success: false,
+      ip_address: ""
     };
   },
   methods: {
@@ -35,6 +36,20 @@ export default {
         })
 
     },
+
+    saveView(){
+
+      axios.get("https://api.ipify.org?format=json")
+      .then(res=>{
+        this.ip_address = res.data.ip;
+        console.log(this.ip_address);
+        axios.get(store.apiUrl + "save-view/" + this.apartment.id + "/" + this.ip_address)
+        .then(res=>{
+          console.log(res.data);
+        })
+      })
+
+    }
   },
   computed: {
     servicesList() {
@@ -45,6 +60,7 @@ export default {
   },
   mounted() {
     this.getApartment(this.$route.params.slug);
+    this.saveView();
   },
 };
 </script>
