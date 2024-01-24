@@ -18,9 +18,9 @@ export default {
                 <div class="navbar">
                     <nav>
                         <ul class="d-flex align-items-center">
-                            <li>
+                            <!-- <li>
                                 <router-link :to="{name: 'home'}">Home</router-link>
-                            </li>
+                            </li> -->
                             <li class="mx-4">
                                 <router-link :to="{name: 'ricerca'}">Cerca appartamenti</router-link>
                             </li>
@@ -28,6 +28,9 @@ export default {
                                 <!-- <router-link :to="{name: 'accedi'}">Accedi</router-link> -->
 
                                 <a href="http://127.0.0.1:8000/admin">Accedi</a>
+                            </li>
+                            <li class="mx-4">
+                                <a href="#">Contatti</a>
                             </li>
                             <!-- <li class="ms-4"> -->
                                 <!-- <router-link :to="{name: 'registrati'}">Registrati</router-link> -->
