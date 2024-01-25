@@ -12,7 +12,7 @@ export default {
     return {
       store,
       position: '',
-      range: 20,
+      range: 5,
       beds: 0,
       rooms: 0,
       latitude: 0,
@@ -175,7 +175,7 @@ export default {
           <div class="col-4 pt-3">
             <label for="rangekm">Raggio di ricerca (Km)</label>
             <input type="text" class="form-control select border-none" id="rangekm" v-model="range" readonly>
-            <input type="range" class="form-range custom-range" min="20" max="200" step="20" id="rangekm" v-model="range">
+            <input type="range" class="form-range custom-range" min="5" max="40" step="5" id="rangekm" v-model="range">
           </div>
 
           <div class="col-4 pt-3">
