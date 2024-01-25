@@ -88,7 +88,7 @@ export default {
   <Jumbotron />
   
   <div class="container p-5 ">
-    <h1>DI TENDENZA</h1>
+    <h1>In evidenza</h1>
     <div class="d-flex flex-wrap justify-content-evenly">
       <ApartmentCards :cardObj="store.apartments"/>
     </div>

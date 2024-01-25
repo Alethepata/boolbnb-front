@@ -160,7 +160,7 @@ export default {
               id="search"
               class="form-control me-2 border-blue"
               type="search"
-              placeholder="Search"
+              placeholder="Cerca"
               aria-label="Search"
               @keyup = 'this.getApi()'
               list="countrydata"
