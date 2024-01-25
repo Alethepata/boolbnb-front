@@ -22,7 +22,7 @@ export default {
                                 <router-link :to="{name: 'home'}">Home</router-link>
                             </li> -->
                             <li class="mx-4">
-                                <router-link :to="{name: 'ricerca'}">Cerca appartamenti</router-link>
+                                <router-link :to="{name: 'ricerca'}">Ricerca avanzata</router-link>
                             </li>
                             <li>
                                 <a href="#">Contatti</a>
