@@ -174,19 +174,19 @@ export default {
     
           <div class="col-4 pt-3">
             <label for="rangekm">Raggio di ricerca (Km)</label>
-            <input type="text" class="form-control select border-none" id="rangekm" v-model="range">
+            <input type="text" class="form-control select border-none" id="rangekm" v-model="range" readonly>
             <input type="range" class="form-range custom-range" min="20" max="200" step="20" id="rangekm" v-model="range">
           </div>
 
           <div class="col-4 pt-3">
             <label for="beds">Numero di Letti</label>
-            <input type="text" class="form-control select border-none" id="beds" v-model="beds">
+            <input type="text" class="form-control select border-none" id="beds" v-model="beds" readonly>
             <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="beds" v-model="beds">
           </div>
 
           <div class="col-4 pt-3">
             <label for="rooms">Numero di Stanze</label>
-            <input type="text" class="form-control select border-none" id="rooms" v-model="rooms">
+            <input type="text" class="form-control select border-none" id="rooms" v-model="rooms" readonly>
             <input type="range" class="form-range custom-range" min="0" max="20" step="1" id="rooms" v-model="rooms">
           </div>
 
