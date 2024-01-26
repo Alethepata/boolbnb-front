@@ -165,6 +165,8 @@ name: 'Jumbotron',
     padding: 100px;
     height: 600px;
     padding-top: 70px;
+    max-width: 1400px;
+    margin: 0 auto;
 
     img{
         box-shadow: 10px 10px rgb(225, 222, 222);
