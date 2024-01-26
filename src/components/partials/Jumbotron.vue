@@ -127,7 +127,7 @@ name: 'Jumbotron',
         </div>
 
         <div class="image">
-            <img class="rounded-5" src="https://img.freepik.com/premium-photo/old-fashioned-blue-lounge-with-wooden-decoration-navy-sofa_410516-42021.jpg" alt="">
+            <img class="rounded-5" src="/public/salotto.avif" alt="">
         </div>
 
     </div>
