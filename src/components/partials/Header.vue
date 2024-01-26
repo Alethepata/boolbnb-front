@@ -10,7 +10,7 @@ export default {
                 <div class="logo">
                     <div>
                         <router-link :to="{name: 'home'}">
-                            <img src="/public/Boolbnb logo.png" alt="">
+                            <img src="/public/Boolbnb_logo.webp" alt="" class="rounded-circle">
                         </router-link>
                         
                     </div>
@@ -47,13 +47,16 @@ export default {
 <style lang="scss" scoped>
 
 header {
-    height: 60px;
-    background-color:#F6F1F1;
-    border-bottom: 1px solid #146C94 ;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    z-index: 10000;
     .logo {
         img {
-            width: 20%;
-            padding: 3px;
+            width: 70px;
+            //padding: 3px;
+
         }
     }
     .navbar {
