@@ -119,12 +119,23 @@ name: 'Jumbotron',
 </script>
 
 <template>
-    <div class="jumbotron">
-        <div class="search-bar">
-            <h1>Trova l'alloggio che fa per te</h1>
-            <div class="bar">
+    <div class="jumbotron d-flex justify-content-between align-items-center">
+
+        <div class="text-content text-center">
+            <h1>Benvenuti su Boolbnb !</h1>
+            <p>Boolbnb è la tua piattaforma di riferimento per gli affitti brevi. Offriamo una selezione di proprietà uniche e accoglienti che ti faranno sentire a casa, ovunque tu decida di viaggiare.</p>
+        </div>
+
+        <div class="image">
+            <img class="rounded-5" src="https://img.freepik.com/premium-photo/old-fashioned-blue-lounge-with-wooden-decoration-navy-sofa_410516-42021.jpg" alt="">
+        </div>
+
+    </div>
+    <div class="background-search-bar">
+        <div class="search-bar rounded-5">
+                <div class="bar d-flex justify-content-between align-items-center">
                 <input
-                class="form-control me-2"
+                class="form-control border-0"
                 type="search"
                 placeholder="Inserisci l'indirizzo"
                 id="city"
@@ -137,11 +148,12 @@ name: 'Jumbotron',
                     id='autocompleteList'
                     class="list-group">
                 </ul>
-                <button class="btn btn-outline" type="submit" @click="this.GetLatLon()">Cerca</button>
+                <div class="button">
+                    <button class="btn" type="submit" @click="this.GetLatLon()">&#9740;</button>
+                </div>
             </div>
            
-        </div>
-
+    </div>
     </div>
   
 </template>
@@ -149,47 +161,79 @@ name: 'Jumbotron',
 <style lang="scss" scoped>
 
 .jumbotron {
-    background-image: url(../../../public/photo-1477959858617-67f85cf4f1df.webp);
     background-size: cover;
     padding: 100px;
     height: 600px;
-    .search-bar {
-        margin: 0 auto;
-        padding: 50px;
-        width: 40%;
-        height: 70%;
-        border-radius: 30px;
-        #autocompleteList{
-            width: calc(100% - 40px);
-            position: absolute;
-            z-index: 999;
-        }
-        h1 {
-            color: #146C94;
-            text-align: center;
-        }
-        .bar {
-            position: relative;
-            width: 100%;
-            margin: auto;
-            text-align: center;
-            padding: 20px;
-            input {
-                background-color: #F6F1F1;
-                border: 2px solid #146C94;
-                height: 60px;
-            }
-            button {
-                margin: 20px;
-                color: #F6F1F1;
-                border: 1px solid #F6F1F1;
-                &:hover {
-                    background-color: #19A7CE;
-                }
-            }
-        }
+    padding-top: 70px;
 
+    img{
+        box-shadow: 10px 10px rgb(225, 222, 222);
+    }
+    .text-content{
+        margin-right:30px ;
+        h1{
+            color: #146C94;
+            font-weight: 600;
+        }
+        p{
+            color: #724D3F;
+            font-size: 18px;
+        }
+    }
+    
+}
+.background-search-bar{
+    position: relative;
+    width: 100%;
+    padding-bottom: 52px;
+}
+
+.search-bar {
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    border: 1px solid #724D3F;
+    overflow: hidden;
+    background-color: white;
+
+    #autocompleteList{
+        width: 482px;
+        margin: 0 auto;
+        position: absolute;
+        z-index: 999;
+        top: 72px;
+        height: 100%;
+        overflow-y: auto;
     }
 
-}
+    .bar {
+        input {
+            background-color: rgba(255, 255, 255, 0);
+            &::placeholder{
+                color: #724D3F;
+            }
+            &:focus{
+                box-shadow: none;            
+                &::placeholder{
+                color: #146C94;
+            }
+            }
+
+        }
+        button {
+            padding: 0;
+            margin: 0;
+            background-color: #146C94;
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            transform: scaleY(-1);
+            font-size: 31px;
+            border-radius: 50%;
+        }
+    }
+
+ }
 </style>

@@ -144,7 +144,7 @@ export default {
 </script>
 
 <template>
-  <div class="container my-5">
+  <div class="container container-search">
     
     <div class="main-box">
 
@@ -237,7 +237,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.main-box{
+
+.container-search{
+  padding-top: 70px;
+
+  .main-box{
   background-color: white;
   border: 2px solid #146C94;
   border-radius: 30px;
@@ -284,6 +288,9 @@ export default {
     }
   }
 }
+
+}
+
 
 .results-container{
   padding: 50px;
