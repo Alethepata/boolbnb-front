@@ -92,8 +92,8 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h2 class="my-4">{{ apartment.title }}</h2>
+  <div class="container ">
+    <h1 class="py-4">{{ apartment.title }}</h1>
     <p>{{ apartment.address }}</p>
     <div class="d-flex">
       <div class="image me-5">
