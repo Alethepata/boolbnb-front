@@ -1,6 +1,18 @@
 <script>
+
 export default {
-    name:'Header'
+    name:'Header',
+    data(){
+        return {
+            showMenu: false
+        }
+
+    },
+    methods: {
+        showOffcanvasMenu(){
+            this.showMenu ? this.showMenu = false : this.showMenu = true;
+        }
+    }
 }
 </script>
 
@@ -36,7 +48,7 @@ export default {
                     </nav>
                 </div>
                 <!-- Hamburger menu -->
-                <div class="hamburger-menu">
+                <!-- <div class="hamburger-menu" >
                     <input id="menu__toggle" type="checkbox" />
                     <label class="menu__btn" for="menu__toggle">
                     <span></span>
@@ -55,9 +67,41 @@ export default {
                             <a class="menu__item text-light" href="http://127.0.0.1:8000/admin"><i class="fa-regular fa-circle-user"></i> Area Riservata</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- End Hamburger menu -->
-
+                
+                <div id="app" class="hamburger-menu"> 
+                    <div class="container">
+                        <span class="float-end">
+                            <button class="navbar-toggler" type="button" @click.prevent="showOffcanvasMenu()">
+                                <span class="navbar-toggler-icon">&#9776;</span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="offcanvas offcanvas-end" :class="showMenu ? 'show' : ''" tabindex="-1" :style="{ visibility: showMenu ? 'visible' : 'hidden' }">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="">Menu</h5>
+                            <a type="button" class="btnx text-reset" @click.prevent="showOffcanvasMenu()"><i
+                            class="fa-regular fa-circle-xmark"></i></a>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul>
+                                <li>
+                                    <router-link :to="{name: 'home'}" @click.prevent="showOffcanvasMenu()">Home</router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{name: 'ricerca'}" @click.prevent="showOffcanvasMenu()">Ricerca avanzata</router-link>
+                                </li>
+                                <li>
+                                    <a href="#" @click.prevent="showOffcanvasMenu()">Contatti</a>
+                                </li>
+                                <li>
+                                    <a href="http://127.0.0.1:8000/admin">Area Riservata</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
         </div>
     </header>
 </template>
