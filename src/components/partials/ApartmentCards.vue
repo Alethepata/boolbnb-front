@@ -19,7 +19,7 @@ export default {
   <div class="card border-0" style="width: 18rem">
     <div class="image">
       <span class="badge">Sponsorizzato</span>
-      <img :src="apartment.img " class="card-img-top h-100 " :alt="apartment.title" />
+      <img :src="apartment.img" class="card-img-top h-100 " :alt="apartment.title" />
     </div>
     <div class="card-body p-2">
       <div class="card-text">
@@ -37,6 +37,7 @@ export default {
 .card {
   .image {
     position: relative;
+    height: 400px;
     .badge {
       position: absolute;
       top: 10px;
