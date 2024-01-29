@@ -9,45 +9,65 @@ export default {
     };
   },
   props: {
-    apartment:Object
+    cardArray: Array
   },
+  methods:{
+    formatDistance(distance){
+      return Math.round(distance / 1000);
+    }
+  }
 };
 </script>
 
 <template>
-  <router-link :to="{name: 'apartment-detail', params:{slug: apartment.slug}}" class="link w-50 m-2">
-  <div class="card border-0" style="width: 18rem">
-    <div class="image">
-      <span class="badge">Sponsorizzato</span>
-      <img :src="apartment.img" class="card-img-top h-100 " :alt="apartment.title" />
-    </div>
-    <div class="card-body p-2">
-      <div class="card-text">
-        <h5>{{ apartment.title }}</h5>
-        <p>{{ apartment.address }}</p>
-      </div>
-    </div>
-  </div>
-</router-link>
+<!-- per il responsive fare un container row cols e impostare tutte le grandezze in percentuale  -->
+<!-- mettere tutti i colori del sito in delle variabili scss -->
+      <router-link
+        v-for="object in cardArray"
+        :key="object.apartment.id"
+        :to="{name: 'apartment-detail', params:{slug: object.apartment.slug}}"
+        class="link m-2">
+          <div class="card" style="width: 18rem">
+            <div class="image">
+              <!-- Da sistemare lo sponsor mettere da api il parametro -->
+              <span class="badge">Sponsorizzato</span>
+              <img :src="object.apartment.img " :alt="object.apartment.title" />
+            </div>
+            <div class="card-body p-2">
+              <div class="card-text">
+                <h5>{{ object.apartment.title }}</h5>
+                <p>{{ object.apartment.address }}</p>
+                <p>Distanza: {{ this.formatDistance(object.distance) }} Km</p>
+              </div>
+            </div>
+          </div>
+        </router-link>
+  
 
 </template>
 
 <style style lang="scss" scoped>
-
 .card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d5e5e9;
+  padding: 5px;
   .image {
     position: relative;
-    height: 400px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
     .badge {
       position: absolute;
       top: 10px;
       left: 10px;
       background-color: #19A7CE;
     }
-    .card-img-top {
-      height: 350px;  /* Imposta l'altezza fissa */
+    img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 15px;
+      
     }
   }
   p {
