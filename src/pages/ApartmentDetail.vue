@@ -93,7 +93,6 @@ export default {
 
 <template>
   <div class="container ">
-    <div class="container-form">
       <h1 class="py-4">{{ apartment.title }}</h1>
     <p>{{ apartment.address }}</p>
     <div class="d-flex">
@@ -152,14 +151,11 @@ export default {
 
     </div>
     </div>
-  </div>
-
 </template>
 
 <style lang="scss" scoped>
 
-.container-form{
-  padding-top: 80px;
+
   .image {
   width: 800px;
   border-radius: 10px;
@@ -167,9 +163,8 @@ export default {
     width: 100%;
     border-radius: 10px;
   }
-}
-h5,
-h2 {
+h3,
+h1 {
   color: black;
 }
 
