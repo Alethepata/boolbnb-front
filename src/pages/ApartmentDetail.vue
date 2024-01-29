@@ -189,8 +189,7 @@ export default {
 
 
     </div>
-  </div>
-
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -287,4 +286,5 @@ h4{
         stroke-dashoffset: 0
     }
 }
+
 </style>

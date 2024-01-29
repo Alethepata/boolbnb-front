@@ -9,62 +9,50 @@ export default {
     };
   },
   props: {
-    cardObj:Object
-  }
+    apartment:Object
+  },
 };
 </script>
 
 <template>
-  <div v-for="apartment in cardObj" :key="apartment.id" class="card" style="width: 18rem">
+  <router-link :to="{name: 'apartment-detail', params:{slug: apartment.slug}}" class="link w-50 m-2">
+  <div class="card border-0" style="width: 18rem">
     <div class="image">
       <span class="badge">Sponsorizzato</span>
-      <img :src="apartment.img " class="card-img-top" :alt="apartment.title" />
+      <img :src="apartment.img " class="card-img-top h-100 " :alt="apartment.title" />
     </div>
-    <div class="card-body">
+    <div class="card-body p-2">
       <div class="card-text">
         <h5>{{ apartment.title }}</h5>
         <p>{{ apartment.address }}</p>
-        <router-link :to="{name: 'apartment-detail', params:{slug: apartment.slug}}" class="link w-50 m-2">Dettaglio</router-link>
       </div>
     </div>
   </div>
+</router-link>
+
 </template>
 
 <style style lang="scss" scoped>
 
 .card {
-  border: 3px solid #19A7CE;
-  border-radius: 20px;
-  background-color: #0973a1;
-  color: white;
-  width: 100%;
-  height: 400px;
-  text-align: center;
-  position: relative;
   .image {
-    width: 90%;
-    height: 50%;
-    margin: 10px auto;
-    flex-grow: stretch;
     position: relative;
     .badge {
       position: absolute;
-      top: 2px;
+      top: 10px;
       left: 10px;
       background-color: #19A7CE;
     }
-    img {
-      width: 100%;
-      height: 95%;
+    .card-img-top {
+      height: 350px;  /* Imposta l'altezza fissa */
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 15px;
     }
   }
   p {
     color: #19A7CE;
   }
   .link {
-    color: white;
     text-decoration: underline;
     position: absolute;
     bottom: 10px;
