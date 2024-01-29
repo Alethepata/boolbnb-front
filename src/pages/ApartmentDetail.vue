@@ -93,11 +93,12 @@ export default {
 
 <template>
   <div class="container ">
-    <h1 class="py-4">{{ apartment.title }}</h1>
+    <div class="container-form">
+      <h1 class="py-4">{{ apartment.title }}</h1>
     <p>{{ apartment.address }}</p>
     <div class="d-flex">
       <div class="image me-5">
-        <img :src="apartment.img" alt="" />
+        <img :src="apartment.img" alt="{{ apartment.title }}" />
       </div>
       <div>
         <div>
@@ -150,17 +151,16 @@ export default {
 
 
     </div>
+    </div>
   </div>
 
 </template>
 
 <style lang="scss" scoped>
 
-
-.container{
-  padding-top: 100px;
-}
-.image {
+.container-form{
+  padding-top: 80px;
+  .image {
   width: 800px;
   border-radius: 10px;
   img {
@@ -179,9 +179,6 @@ ul {
     color: black;
   }
 }
-
-.map{
-  width: 500px;
-  height: 300px;
 }
+
 </style>

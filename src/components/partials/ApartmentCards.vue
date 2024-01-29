@@ -11,11 +11,6 @@ export default {
   props: {
     apartment:Object
   },
-  methods:{
-    formatDistance(distance){
-      return Math.round(distance / 1000);
-    }
-  }
 };
 </script>
 
@@ -29,7 +24,7 @@ export default {
     <div class="card-body p-2">
       <div class="card-text">
         <h5>{{ apartment.title }}</h5>
-        <p>{{ city }}</p>
+        <p>{{ apartment.address }}</p>
       </div>
     </div>
   </div>
