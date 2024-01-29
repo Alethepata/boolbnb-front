@@ -88,7 +88,7 @@ export default {
   <Jumbotron />
   <div class="my-container">
     <h2>Appartamenti Sponsorizzati</h2>
-    <div class="container p-5 ">
+    <div class="container p-3 ">
     <SlideCard/>
   </div>
   </div>
@@ -100,7 +100,7 @@ export default {
 
 .my-container{
  
-  margin-top: 100px;
+  margin-top: 60px;
   padding: 50px;
 }
 h2 {
