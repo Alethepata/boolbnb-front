@@ -9,22 +9,28 @@ export default {
     };
   },
   props: {
-    cardObj:Object
+    cardArray:Array
+  },
+  methods:{
+    formatDistance(distance){
+      return Math.round(distance / 1000);
+    }
   }
 };
 </script>
 
 <template>
-  <div v-for="apartment in cardObj" :key="apartment.id" class="card" style="width: 18rem">
+  <div v-for="object in cardArray" :key="object.apartment.id" class="card" style="width: 18rem">
     <div class="image">
       <span class="badge">Sponsorizzato</span>
-      <img :src="apartment.img " class="card-img-top" :alt="apartment.title" />
+      <img :src="object.apartment.img " class="card-img-top" :alt="object.apartment.title" />
     </div>
     <div class="card-body">
       <div class="card-text">
-        <h5>{{ apartment.title }}</h5>
-        <p>{{ apartment.address }}</p>
-        <router-link :to="{name: 'apartment-detail', params:{slug: apartment.slug}}" class="link w-50 m-2">Dettaglio</router-link>
+        <h5>{{ object.apartment.title }}</h5>
+        <p>{{ object.apartment.address }}</p>
+        <p>Distanza: {{ this.formatDistance(object.distance) }} Km</p>
+        <router-link :to="{name: 'apartment-detail', params:{slug: object.apartment.slug}}" class="link w-50 m-2">Dettaglio</router-link>
       </div>
     </div>
   </div>

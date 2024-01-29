@@ -47,8 +47,8 @@ export default {
         .then(res =>{
           // console.log('Search() success');
           this.isError = false;
-          this.apartmentsFiltred = res.data.filteredApartments;
-          // console.log(this.apartmentsFiltred);
+          this.apartmentsFiltred = res.data.filtredApartments;
+          console.log(this.apartmentsFiltred);
         })
         .catch(error=>{
           this.isError = true;
@@ -224,7 +224,7 @@ export default {
 
       
       <div class="container my-5 d-flex flex-wrap justify-content-evenly">
-        <ApartmentCards :cardObj="this.apartmentsFiltred"/>
+        <ApartmentCards :cardArray="this.apartmentsFiltred"/>
       </div>
     </div>
 
