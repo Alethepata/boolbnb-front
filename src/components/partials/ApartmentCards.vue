@@ -9,7 +9,7 @@ export default {
     };
   },
   props: {
-    cardArray:Array
+    apartment:Object
   },
   methods:{
     formatDistance(distance){
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <div v-for="object in cardArray" :key="object.apartment.id" class="card" style="width: 18rem">
+  <div  class="card" style="width: 18rem">
     <div class="image">
       <span class="badge">Sponsorizzato</span>
       <img :src="object.apartment.img " class="card-img-top" :alt="object.apartment.title" />
