@@ -58,7 +58,8 @@ export default {
   bottom: -3px !important;
  }
 
- .mySwiper .swiper-slide {
+.swiper-slide {
+  margin-right: 0px !important;
   display: flex;
   justify-content: center;
   align-items: center;

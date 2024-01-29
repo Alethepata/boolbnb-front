@@ -19,7 +19,7 @@ export default {
   <div class="card border-0" style="width: 18rem">
     <div class="image">
       <span class="badge">Sponsorizzato</span>
-      <img :src="object.apartment.img " class="card-img-top" :alt="object.apartment.title" />
+      <img :src="apartment.img " class="card-img-top h-100 " :alt="apartment.title" />
     </div>
     <div class="card-body p-2">
       <div class="card-text">
@@ -43,8 +43,10 @@ export default {
       left: 10px;
       background-color: #19A7CE;
     }
-    img {
-     border-radius: 20px;
+    .card-img-top {
+      height: 350px;  /* Imposta l'altezza fissa */
+      object-fit: cover;
+      border-radius: 15px;
     }
   }
   p {

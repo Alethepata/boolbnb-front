@@ -86,18 +86,26 @@ export default {
 <template>
   
   <Jumbotron />
-  
-  <div class="container    p-5 ">
+  <div class="my-container">
+    <h2>Appartamenti Sponsorizzati</h2>
+    <div class="container p-5 ">
     <SlideCard/>
-
-   
   </div>
+  </div>
+  
   
 </template>
 
 <style lang="scss" scoped>
-h1 {
+
+.my-container{
+ 
+  margin-top: 100px;
+  padding: 50px;
+}
+h2 {
   text-align: center;
   padding: 80px;
+  color:#146C94 ;
 }
 </style>
