@@ -52,6 +52,7 @@ header {
     background-color: white;
     position: fixed;
     z-index: 10000;
+    border-bottom: 1px solid lightgrey;
     .logo {
         img {
             width: 70px;
