@@ -92,12 +92,12 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h2 class="my-4">{{ apartment.title }}</h2>
+  <div class="container ">
+      <h1 class="py-4">{{ apartment.title }}</h1>
     <p>{{ apartment.address }}</p>
     <div class="d-flex">
       <div class="image me-5">
-        <img :src="apartment.img" alt="" />
+        <img :src="apartment.img" alt="{{ apartment.title }}" />
       </div>
       <div>
         <div>
@@ -150,26 +150,21 @@ export default {
 
 
     </div>
-  </div>
-
+    </div>
 </template>
 
 <style lang="scss" scoped>
 
 
-.container{
-  padding-top: 100px;
-}
-.image {
+  .image {
   width: 800px;
   border-radius: 10px;
   img {
     width: 100%;
     border-radius: 10px;
   }
-}
-h5,
-h2 {
+h3,
+h1 {
   color: black;
 }
 
@@ -179,9 +174,6 @@ ul {
     color: black;
   }
 }
-
-.map{
-  width: 500px;
-  height: 300px;
 }
+
 </style>

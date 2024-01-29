@@ -1,13 +1,13 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
-import ApartmentCards from '../components/partials/ApartmentCards.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue';
+import SlideCard from '../components/partials/SlideCard.vue';
 export default {
   name: 'Home',
   components: {
-    ApartmentCards,
     Jumbotron,
+    SlideCard
   },
   data() {
     return {
@@ -86,19 +86,26 @@ export default {
 <template>
   
   <Jumbotron />
-  
-  <div class="container p-5 ">
-    <h1>In evidenza</h1>
-    <div class="d-flex flex-wrap justify-content-evenly">
-      <ApartmentCards :cardObj="store.apartments"/>
-    </div>
+  <div class="my-container">
+    <h2>Appartamenti Sponsorizzati</h2>
+    <div class="container p-3 ">
+    <SlideCard/>
   </div>
+  </div>
+  
   
 </template>
 
 <style lang="scss" scoped>
-h1 {
+
+.my-container{
+ 
+  margin-top: 60px;
+  padding: 50px;
+}
+h2 {
   text-align: center;
   padding: 80px;
+  color:#146C94 ;
 }
 </style>
