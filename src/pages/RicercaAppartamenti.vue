@@ -153,15 +153,14 @@ export default {
 
       <div class="high-filter d-flex ">
 
-        <div class="filter-side">
+        <div class="filter-side my-4">
 
-          <div class="col-8 inputSearch">
-            <label for="search">Dove?</label>
+          <div class="col-8 inputSearch mb-3">
             <input
               id="search"
               class="form-control me-2 border-blue"
               type="search"
-              placeholder="Cerca"
+              placeholder="Dove?"
               aria-label="Search"
               @keyup = 'this.getApi()'
               list="countrydata"
@@ -172,28 +171,33 @@ export default {
                 class="list-group">
             </ul>
           </div>
-    
-          <div class="col-4 pt-3">
-            <label for="rangekm">Raggio di ricerca (Km)</label>
-            <input type="text" class="form-control select border-none" id="rangekm" v-model="range" readonly>
-            <input type="range" class="form-range custom-range" min="5" max="40" step="5" id="rangekm" v-model="range">
-          </div>
 
-          <div class="col-4 pt-3">
-            <label for="beds">Numero di Letti</label>
-            <input type="text" class="form-control select border-none" id="beds" v-model="beds" readonly>
-            <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="beds" v-model="beds">
-          </div>
+          <div class="d-flex align-items-center">
 
-          <div class="col-4 pt-3">
-            <label for="rooms">Numero di Stanze</label>
-            <input type="text" class="form-control select border-none" id="rooms" v-model="rooms" readonly>
-            <input type="range" class="form-range custom-range" min="0" max="20" step="1" id="rooms" v-model="rooms">
+            <div class="col-3 pt-3 text-center me-4">
+              <label for="rangekm">Raggio (Km)</label>
+              <input type="text" class="form-control select border-none" id="rangekm" v-model="range" readonly>
+              <input type="range" class="form-range custom-range" min="5" max="40" step="5" id="rangekm" v-model="range">
+            </div>
+  
+            <div class="col-3 pt-3 text-center me-4">
+              <label for="beds">Numero Letti</label>
+              <input type="text" class="form-control select border-none" id="beds" v-model="beds" readonly>
+              <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="beds" v-model="beds">
+            </div>
+  
+            <div class="col-3 pt-3 text-center me-4">
+              <label for="rooms">Numero Stanze</label>
+              <input type="text" class="form-control select border-none" id="rooms" v-model="rooms" readonly>
+              <input type="range" class="form-range custom-range" min="0" max="20" step="1" id="rooms" v-model="rooms">
+            </div>
+  
           </div>
 
           <div class="col-4 pt-5">
-            <button class="btn btn-outline-primary border-blue" type="submit" @click="this.GetLatLon()">Cerca</button>
+            <button class="btn btn-outline-primary btn-blue" type="submit" @click="this.GetLatLon()">Cerca</button>
           </div>
+    
 
         </div>
 
@@ -351,8 +355,10 @@ export default {
 
     button {
       color: #146C94;
+      border: 2px solid #146C94;
       &:hover {
-        background-color: #AFD3E2;
+        background-color: #146C94;
+        color: white;
       }
     }
   }
