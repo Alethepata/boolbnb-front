@@ -29,19 +29,21 @@ export default {
   },
   methods: {
     GetLatLon(){
-    this.isSearch = true;
-    this.isLoaded = true;
-    this.latitude = 0;
-    this.longitude = 0;
-    this.position = store.position;
-      axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
-      .then(res =>{
-        // console.log('Sto prendendo le coordinate');
-        this.latitude = res.data.results[0].position.lat;
-        this.longitude = res.data.results[0].position.lon;
-        // console.log(res.data.results,this.latitude,this.longitude);
-        this.Search();
-      });
+    if(this.position != ''){
+      this.isSearch = true;
+      this.isLoaded = true;
+      this.latitude = 0;
+      this.longitude = 0;
+      this.position = store.position;
+        axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
+        .then(res =>{
+          // console.log('Sto prendendo le coordinate');
+          this.latitude = res.data.results[0].position.lat;
+          this.longitude = res.data.results[0].position.lon;
+          // console.log(res.data.results,this.latitude,this.longitude);
+          this.Search();
+        });
+    }
 
 
 },
@@ -320,10 +322,10 @@ export default {
           </div>
   
   
-          <div class="container-fluid d-flex flex-wrap" v-else>
+          <div class="container-fluid d-flex flex-wrap justify-content-center" v-else>
               <ApartmentCards :cardArray="this.apartmentsFiltred"/>
           </div>
-          
+
         </div>
 
 

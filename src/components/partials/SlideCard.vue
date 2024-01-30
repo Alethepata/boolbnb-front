@@ -19,7 +19,7 @@ export default {
       SwiperSlide,
       ApartmentCards,
     },
-    setup() {
+    data() {
       return {
         store,
         modules: [Pagination, Navigation],
