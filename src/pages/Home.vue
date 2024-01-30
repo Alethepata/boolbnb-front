@@ -48,7 +48,7 @@ export default {
   <Jumbotron />
   <div class="my-container">
     <h2>Appartamenti Sponsorizzati</h2>
-    <div class="container p-3 ">
+    <div class="container">
     <SlideCard :apartments="store.apartments"/>
   </div>
   </div>
@@ -58,11 +58,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.my-container{
- 
-  margin-top: 60px;
-  padding: 50px;
-}
 h2 {
   text-align: center;
   padding: 80px;

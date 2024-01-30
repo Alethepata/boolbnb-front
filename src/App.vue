@@ -13,10 +13,16 @@ export default {
 </script>
 
 <template>
-  <Header/>
-  <RouterView />
+  <div class="container-custom">
+    <Header/>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
+
+.container-custom{
+  max-height: 1440px;
+}
 
 </style>

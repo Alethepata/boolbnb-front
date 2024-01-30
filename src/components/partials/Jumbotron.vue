@@ -200,7 +200,7 @@ name: 'Jumbotron',
     padding: 100px;
     height: 600px;
     padding-top: 140px;
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0 auto;
 
     img{

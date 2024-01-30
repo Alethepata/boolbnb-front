@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     GetLatLon(){
-    if(this.position != ''){
       this.isSearch = true;
       this.isLoaded = true;
       this.latitude = 0;
@@ -43,7 +42,7 @@ export default {
           // console.log(res.data.results,this.latitude,this.longitude);
           this.Search();
         });
-    }
+    
 
 
 },

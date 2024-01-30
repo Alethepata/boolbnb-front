@@ -34,39 +34,44 @@ export default {
 </script>
 
 <template>
-  <swiper
-    :slidesPerView="3"
-    :spaceBetween="30"
-    :pagination="{
-      clickable: true,
-    }"
-    :navigation="{
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    }"
-    :modules="modules"
-    class="mySwiper"
-  >
-    
-    <swiper-slide v-for="apartment in apartments" :key="apartment.id" ><CardSliderHome :apartment="apartment"/>
-    </swiper-slide>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-  </swiper>
+  <div class="swiper-container">
+    <swiper
+      :slidesPerView="3"
+      :navigation="{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      
+      <swiper-slide v-for="apartment in apartments" :key="apartment.id" ><CardSliderHome :apartment="apartment"/>
+      </swiper-slide>
+      
+    </swiper>
+    <div class="swiper-button-next swiper-button"></div>
+    <div class="swiper-button-prev swiper-button"></div>
+  </div>
 </template>
 
 <style lang="scss" >
-.swiper-pagination-bullets{
-  position: relative;
-  bottom: -3px !important;
-}
 
-.swiper-slide {
-  margin-right: 0px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.swiper-container{
+  position: relative;
+  width: 100%;
+  .mySwiper{
+    width: 90%;
+  }
+  .swiper-slide {
+    margin-right: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-button{
+    color: #146C94;
+  }
 }
 </style>
 
