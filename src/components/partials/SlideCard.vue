@@ -12,19 +12,24 @@ import { store } from '@/data/store';
   // import required modules
   import { Pagination, Navigation } from 'swiper/modules';
   import ApartmentCards from './ApartmentCards.vue';
+  import CardSliderHome from './CardSliderHome.vue';
 export default {
   name:'SlideCard',
     components: {
       Swiper,
       SwiperSlide,
       ApartmentCards,
+      CardSliderHome
+    },
+    props:{
+      apartments: Array
     },
     data() {
       return {
         store,
         modules: [Pagination, Navigation],
       };
-    },
+    }
   };
 </script>
 
@@ -43,20 +48,19 @@ export default {
     class="mySwiper"
   >
     
-    <swiper-slide v-for="apartment in store.apartments" :key="apartment.id" ><ApartmentCards :apartment="apartment"/>
+    <swiper-slide v-for="apartment in apartments" :key="apartment.id" ><CardSliderHome :apartment="apartment"/>
     </swiper-slide>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   
-   
   </swiper>
 </template>
 
 <style lang="scss" >
- .swiper-pagination-bullets{
+.swiper-pagination-bullets{
   position: relative;
   bottom: -3px !important;
- }
+}
 
 .swiper-slide {
   margin-right: 0px !important;
