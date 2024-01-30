@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       store,
-      position: '',
+      position:'',
       range: 5,
       beds: 0,
       rooms: 0,
@@ -29,22 +29,19 @@ export default {
   },
   methods: {
     GetLatLon(){
-      this.isSearch = true;
-      this.isLoaded = true;
-      this.latitude = 0;
-      this.longitude = 0;
-      this.position = store.position;
-        axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
-        .then(res =>{
-          // console.log('Sto prendendo le coordinate');
-          this.latitude = res.data.results[0].position.lat;
-          this.longitude = res.data.results[0].position.lon;
-          // console.log(res.data.results,this.latitude,this.longitude);
-          this.Search();
-        });
-    
-
-
+        this.isSearch = true;
+        this.isLoaded = true;
+        this.latitude = 0;
+        this.longitude = 0;
+        this.position = store.position;
+          axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
+          .then(res =>{
+            // console.log('Sto prendendo le coordinate');
+            this.latitude = res.data.results[0].position.lat;
+            this.longitude = res.data.results[0].position.lon;
+            // console.log(res.data.results,this.latitude,this.longitude);
+            this.Search();
+          })
 },
 
 
@@ -151,6 +148,7 @@ export default {
       this.apartmentsFiltred = apartments;
       this.isError = isError;
     }
+    this.GetLatLon();
   }
 }
 </script>
