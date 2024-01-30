@@ -121,7 +121,7 @@ name: 'Jumbotron',
 <template>
 
     <!-- Versione desktop  -->
-    <div class="jumbotron d-flex justify-content-between align-items-center">
+    <div class="jumbotron justify-content-between align-items-center">
 
         <div class="text-content text-center">
             <h1>Benvenuti su Boolbnb !</h1>
@@ -133,7 +133,7 @@ name: 'Jumbotron',
         </div>
 
     </div>
-    <div class="background-search-bar">
+    <div class="background-search-bar ">
         <div class="search-bar rounded-5">
                 <div class="bar d-flex justify-content-between align-items-center">
                 <input
@@ -159,6 +159,36 @@ name: 'Jumbotron',
     <!-- fine versione desktop  -->
 
     <!-- Versione Mobile  -->
+    <div class="jumbotron-m align-items-center">
+
+        <div class="text-content text-center">
+            <h1>Benvenuti su Boolbnb !</h1>
+            <p>Boolbnb è la tua piattaforma di riferimento per gli affitti brevi. Offriamo una selezione di proprietà uniche e accoglienti che ti faranno sentire a casa, ovunque tu decida di viaggiare.</p>
+        </div>
+    </div>
+    <div class="background-search-bar-m ">
+        <div class="search-bar-m rounded-5">
+            <div class="bar-m d-flex justify-content-between align-items-center">
+                <input
+                    class="form-control border-0"
+                    type="search"
+                    placeholder="Inserisci l'indirizzo"
+                    id="city"
+                    v-model="store.position"
+                    @keyup = 'this.getApi()'
+                    @keyup.enter="this.GetLatLon()"
+                    autocomplete="off"
+                    list="countrydata">
+                <ul
+                    id='autocompleteList'
+                    class="list-group">
+                </ul>
+                <div class="button">
+                    <button class="btn" type="submit" @click="this.GetLatLon()">&#9740;</button>
+                </div>
+            </div>  
+        </div>
+    </div>
 
   
 </template>
