@@ -39,7 +39,7 @@ export default {
                                 <router-link :to="{name: 'ricerca'}">Ricerca avanzata</router-link>
                             </li>
                             <li>
-                                <a href="#">Contatti</a>
+                                <router-link :to="{name: 'contatti'}">Contatti</router-link>
                             </li>
                             <li class="mx-4">
                                 <!-- <router-link :to="{name: 'accedi'}">Accedi</router-link> -->
@@ -77,7 +77,7 @@ export default {
                                     <router-link :to="{name: 'ricerca'}" @click.prevent="showOffcanvasMenu()">Ricerca avanzata</router-link>
                                 </li>
                                 <li>
-                                    <a href="#" @click.prevent="showOffcanvasMenu()">Contatti</a>
+                                    <router-link :to="{name: 'contatti'}" @click.prevent="showOffcanvasMenu()">Contatti</router-link>
                                 </li>
                                 <li>
                                     <a href="http://127.0.0.1:8000/admin">Area Riservata</a>
