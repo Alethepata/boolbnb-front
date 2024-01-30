@@ -146,7 +146,7 @@ export default {
 <template>
   <div class="container container-search">
     
-    <div class="main-box">
+    <div class="main-box mt-5">
 
       <h1>Ricerca Avanzata</h1>
 
@@ -223,7 +223,7 @@ export default {
       </div>
 
       
-      <div class="container my-5 d-flex flex-wrap justify-content-evenly">
+      <div class="container my-5 d-flex flex-wrap justify-content-between">
         <ApartmentCards :cardArray="this.apartmentsFiltred"/>
       </div>
     </div>

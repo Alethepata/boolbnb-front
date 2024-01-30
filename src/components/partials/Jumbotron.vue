@@ -119,6 +119,8 @@ name: 'Jumbotron',
 </script>
 
 <template>
+
+    <!-- Versione desktop  -->
     <div class="jumbotron d-flex justify-content-between align-items-center">
 
         <div class="text-content text-center">
@@ -151,10 +153,13 @@ name: 'Jumbotron',
                 <div class="button">
                     <button class="btn" type="submit" @click="this.GetLatLon()">&#9740;</button>
                 </div>
-            </div>
-           
+            </div>  
+        </div>
     </div>
-    </div>
+    <!-- fine versione desktop  -->
+
+    <!-- Versione Mobile  -->
+
   
 </template>
 
@@ -164,7 +169,7 @@ name: 'Jumbotron',
     background-size: cover;
     padding: 100px;
     height: 600px;
-    padding-top: 70px;
+    padding-top: 140px;
     max-width: 1400px;
     margin: 0 auto;
 
@@ -187,7 +192,7 @@ name: 'Jumbotron',
 .background-search-bar{
     position: relative;
     width: 100%;
-    padding-bottom: 52px;
+    padding-bottom: 50px;
 }
 
 .search-bar {

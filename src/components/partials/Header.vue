@@ -27,6 +27,8 @@ export default {
                         
                     </div>
                 </div>
+
+                <!-- Versione desktop  -->
                 <div class="navbar">
                     <nav>
                         <ul class="d-flex align-items-center">
@@ -47,6 +49,11 @@ export default {
                         </ul>
                     </nav>
                 </div>
+
+                <!--Fine Versione desktop  -->
+
+                <!-- Versione Mobile -->
+
                 <div id="app" class="hamburger-menu"> 
                     <div class="container">
                         <span class="float-end">
@@ -79,6 +86,7 @@ export default {
                         </div>
                     </div>
                 </div>
+                <!--Fine Versione Mobile -->
         </div>
     </header>
 </template>
@@ -91,6 +99,7 @@ header {
     background-color: white;
     position: fixed;
     z-index: 10000;
+    border-bottom: 1px solid lightgrey;
     .logo {
         img {
             width: 70px;

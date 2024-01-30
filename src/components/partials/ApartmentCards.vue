@@ -9,7 +9,7 @@ export default {
     };
   },
   props: {
-    cardArray:Array
+    cardArray: Array
   },
   methods:{
     formatDistance(distance){
@@ -20,57 +20,60 @@ export default {
 </script>
 
 <template>
-  <div v-for="object in cardArray" :key="object.apartment.id" class="card" style="width: 18rem">
-    <div class="image">
-      <span class="badge">Sponsorizzato</span>
-      <img :src="object.apartment.img " class="card-img-top" :alt="object.apartment.title" />
-    </div>
-    <div class="card-body">
-      <div class="card-text">
-        <h5>{{ object.apartment.title }}</h5>
-        <p>{{ object.apartment.address }}</p>
-        <p>Distanza: {{ this.formatDistance(object.distance) }} Km</p>
-        <router-link :to="{name: 'apartment-detail', params:{slug: object.apartment.slug}}" class="link w-50 m-2">Dettaglio</router-link>
-      </div>
-    </div>
-  </div>
+<!-- per il responsive fare un container row cols e impostare tutte le grandezze in percentuale  -->
+<!-- mettere tutti i colori del sito in delle variabili scss -->
+      <router-link
+        v-for="object in cardArray"
+        :key="object.apartment.id"
+        :to="{name: 'apartment-detail', params:{slug: object.apartment.slug}}"
+        class="link m-2">
+          <div class="card" style="width: 18rem">
+            <div class="image">
+              <!-- Da sistemare lo sponsor mettere da api il parametro -->
+              <span class="badge">Sponsorizzato</span>
+              <img :src="object.apartment.img " :alt="object.apartment.title" />
+            </div>
+            <div class="card-body p-2">
+              <div class="card-text">
+                <h5>{{ object.apartment.title }}</h5>
+                <p>{{ object.apartment.address }}</p>
+                <p>Distanza: {{ this.formatDistance(object.distance) }} Km</p>
+              </div>
+            </div>
+          </div>
+        </router-link>
+  
+
 </template>
 
 <style style lang="scss" scoped>
-
 .card {
-  border: 3px solid #19A7CE;
-  border-radius: 20px;
-  background-color: #0973a1;
-  color: white;
   width: 100%;
-  height: 400px;
-  text-align: center;
-  position: relative;
+  height: 100%;
+  border: 1px solid #d5e5e9;
+  padding: 5px;
   .image {
-    width: 90%;
-    height: 50%;
-    margin: 10px auto;
-    flex-grow: stretch;
     position: relative;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
     .badge {
       position: absolute;
-      top: 2px;
+      top: 10px;
       left: 10px;
       background-color: #19A7CE;
     }
     img {
       width: 100%;
-      height: 95%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 20px;
+      
     }
   }
   p {
     color: #19A7CE;
   }
   .link {
-    color: white;
     text-decoration: underline;
     position: absolute;
     bottom: 10px;

@@ -1,13 +1,13 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
-import ApartmentCards from '../components/partials/ApartmentCards.vue';
 import Jumbotron from '../components/partials/Jumbotron.vue';
+import SlideCard from '../components/partials/SlideCard.vue';
 export default {
   name: 'Home',
   components: {
-    ApartmentCards,
     Jumbotron,
+    SlideCard
   },
   data() {
     return {
@@ -32,47 +32,6 @@ export default {
           // console.log(store.apartments)
       })
     },
-//     GetLatLon(){
-
-//       this.latitude = 0;
-//       this.longitude = 0;
-//         axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
-//         .then(res =>{
-//           // console.log('Sto prendendo le coordinate');
-//           this.latitude = res.data.results[0].position.lat;
-//           this.longitude = res.data.results[0].position.lon;
-//           // console.log(res.data.results,this.latitude,this.longitude);
-//           this.Search();
-//         });
-      
-
-// },
-//     Search(){
-//       axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/')
-//         .then(res =>{
-//           // console.log('Search() success');
-//           store.apiError = false;
-//           this.isError = store.apiError;
-//           store.apartmentsFounded = res.data.filteredApartments;
-//           this.filteredApartments = store.apartmentsFounded;
-//           // console.log(this.apartmentsFiltred);
-//           this.$router.push({
-//             name: 'ricerca' // Nome della rotta di destinazione
-//             // params: {apartments: this.apartmentsFiltred, isError: this.isError }, // Dati che desideri passare
-//           });
-//         })
-//         .catch(error=>{
-//           store.apiError = true;
-//           this.isError = store.apiError;
-//           store.apartmentsFounded = [];
-//           this.filteredApartments = store.apartmentsFounded;
-//           this.$router.push({
-//             name: 'ricerca' // Nome della rotta di destinazione
-//             // params: {apartments: this.apartmentsFiltred, isError: this.isError }, // Dati che desideri passare
-//           });
-//         });
-
-// },
   },
   mounted() {
     this.getApi(store.apiUrl + 'apartments')
@@ -86,19 +45,26 @@ export default {
 <template>
   
   <Jumbotron />
-  
-  <div class="container p-5 ">
-    <h1>In evidenza</h1>
-    <div class="d-flex flex-wrap justify-content-evenly">
-      <ApartmentCards :cardObj="store.apartments"/>
-    </div>
+  <div class="my-container">
+    <h2>Appartamenti Sponsorizzati</h2>
+    <div class="container p-3 ">
+    <SlideCard/>
   </div>
+  </div>
+  
   
 </template>
 
 <style lang="scss" scoped>
-h1 {
+
+.my-container{
+ 
+  margin-top: 60px;
+  padding: 50px;
+}
+h2 {
   text-align: center;
   padding: 80px;
+  color:#146C94 ;
 }
 </style>
