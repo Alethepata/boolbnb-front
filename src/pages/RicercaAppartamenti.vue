@@ -2,11 +2,13 @@
 import axios from 'axios';
 import { store } from '../data/store';
 import ApartmentCards from '../components/partials/ApartmentCards.vue';
+import LoaderSearch from '../components/partials/LoaderSearch.vue';
 
 export default {
   name: 'RicercaAppartamenti',
   components: {
-    ApartmentCards
+    ApartmentCards,
+    LoaderSearch
   },
   data() {
     return {
@@ -20,12 +22,15 @@ export default {
       services: [],
       requestServices:[],
       isError: false,
-      apartmentsFiltred: []
+      apartmentsFiltred: [],
+      isSearch: false,
+      isLoaded: false
       }
   },
   methods: {
     GetLatLon(){
-
+    this.isSearch = true;
+    this.isLoaded = true;
     this.latitude = 0;
     this.longitude = 0;
     this.position = store.position;
@@ -45,12 +50,18 @@ export default {
     Search(){
       axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
         .then(res =>{
+          this.isLoaded = false;
           // console.log('Search() success');
-          this.isError = false;
           this.apartmentsFiltred = res.data.filtredApartments;
           console.log(this.apartmentsFiltred);
+          if(this.apartmentsFiltred.length == 0){
+            this.isError = true;
+          }else{
+            this.isError = false;
+          }
         })
         .catch(error=>{
+          this.isLoaded = false;
           this.isError = true;
           this.apartmentsFiltred = [];
         });
@@ -295,16 +306,27 @@ export default {
 
      <!--Fine Versione Mobile  -->
 
-
-    <div class="container-fluid results-container">
-      <div v-if="this.isError" class="mt-3">
-        <h3 class="text-dark m-0">Nessun risultato</h3>
-      </div>
-
+     
+     <div class="container-fluid results-container my-5" v-if="isSearch">
       
-      <div class="container my-5 d-flex flex-wrap justify-content-between">
-        <ApartmentCards :cardArray="this.apartmentsFiltred"/>
-      </div>
+      <h2 class="text-center mb-5">Risultati</h2>
+      
+        <LoaderSearch v-if="isLoaded"/>
+
+        <div v-else>
+
+          <div v-if="this.isError" class="mt-3">
+            <h3 class="text-dark m-0 text-center">Nessun risultato trovato</h3>
+          </div>
+  
+  
+          <div class="container-fluid d-flex flex-wrap" v-else>
+              <ApartmentCards :cardArray="this.apartmentsFiltred"/>
+          </div>
+          
+        </div>
+
+
     </div>
 
     
@@ -376,7 +398,9 @@ export default {
 
 
 .results-container{
-  padding: 50px;
+  h2{
+    color: #146C94;
+  }
 }
 
 
