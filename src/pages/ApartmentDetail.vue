@@ -136,10 +136,9 @@ export default {
 
       <div class="card-form">  
 
-
         <Loader v-if="isLoaded"/>
 
-        <div v-else>
+        <div v-else>          
 
           <div v-if="success" class="d-flex align-items-center flex-column">
 
@@ -150,34 +149,38 @@ export default {
             <h4>Messaggio inviato con successo!</h4>
 
           </div>
-  
-          <form @submit.prevent="sendForm()" v-else>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Email
-              </label>
-              <input
-                type="email"
-                v-model="email"
-                class="form-control border-blue"
-                id="exampleFormControlInput1"
-                style="width: 300px;"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Messaggio</label
-              >
-              <textarea
-                class="form-control border-blue"
-                v-model="message"
-                id="exampleFormControlTextarea1"
-                rows="3"
-                style="max-height: 100px; min-height: 100px;"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-blue">Invio</button>
-          </form>
+          <div v-else>
+
+            <p>Invia un messaggio al proprietario per avere piu informazioni sull appartamento</p>
+
+            <form @submit.prevent="sendForm()">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email
+                </label>
+                <input
+                  type="email"
+                  v-model="email"
+                  class="form-control border-blue"
+                  id="exampleFormControlInput1"
+                  style="width: 300px;"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >Messaggio</label
+                >
+                <textarea
+                  class="form-control border-blue"
+                  v-model="message"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  style="max-height: 100px; min-height: 100px;"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-blue">Invio</button>
+            </form>
+          </div>
 
         </div>
 
@@ -217,7 +220,7 @@ export default {
 h6,
 h2,
 h3 {
-  color: black;
+  color: #146C94;
 }
 
 span{
@@ -242,10 +245,16 @@ ul {
 .card-form{
   margin-top: 50px;
   padding: 25px;
+  margin-bottom: 50px;
   border-radius: 10px;
+  height: 400px;
   border: 1px solid #146C94;
   box-shadow: 0px 0px 10px 0px lightgray;
-  height: 325px;
+  p{
+    color: #146C94;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
 
   .border-blue {
       border: 1px solid #146C94;
@@ -267,12 +276,12 @@ ul {
 }
 
 h4{
-  color: #7ac142;
+  color: #146C94;
 }
 
 .animated-check path {
     fill: none;
-    stroke: #7ac142;
+    stroke: #146C94;
     stroke-width: 4;
     stroke-dasharray: 23;
     stroke-dashoffset: 23;
