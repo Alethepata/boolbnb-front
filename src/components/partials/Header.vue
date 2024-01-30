@@ -47,29 +47,6 @@ export default {
                         </ul>
                     </nav>
                 </div>
-                <!-- Hamburger menu -->
-                <!-- <div class="hamburger-menu" >
-                    <input id="menu__toggle" type="checkbox" />
-                    <label class="menu__btn" for="menu__toggle">
-                    <span></span>
-                    </label>
-                    <ul class="menu__box">
-                        <li>
-                            <router-link class="menu__item text-light" :to="{name: 'home'}">Home</router-link>
-                        </li>
-                        <li>
-                            <router-link class="menu__item text-light" :to="{name: 'ricerca'}">Ricerca avanzata</router-link>
-                        </li>
-                        <li>
-                            <a class="menu__item text-light" href="#">Contatti</a>
-                        </li>
-                        <li>
-                            <a class="menu__item text-light" href="http://127.0.0.1:8000/admin"><i class="fa-regular fa-circle-user"></i> Area Riservata</a>
-                        </li>
-                    </ul>
-                </div> -->
-                <!-- End Hamburger menu -->
-                
                 <div id="app" class="hamburger-menu"> 
                     <div class="container">
                         <span class="float-end">
