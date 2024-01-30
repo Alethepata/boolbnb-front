@@ -30,6 +30,9 @@
         .custom-range::-moz-range-thumb {
           background: #146C94;
         }
+        .custom-range::-webkit-slider-thumb {
+          background-color: #724D3F;
+        }
         .border-none {
           border: none;
         }
@@ -74,3 +77,8 @@
     }
 }  
  
+
+.check-pers:checked {
+  background-color: #724D3F;
+  color: #724D3F;
+}

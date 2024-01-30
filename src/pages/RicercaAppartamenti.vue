@@ -218,7 +218,7 @@ export default {
           <div class="d-flex flex-wrap">
 
             <div  v-for="service in this.services" :key="service.id" class="d-flex service">
-              <input class="form-check-input mx-1 border-blue" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
+              <input class="form-check-input mx-1 border-blue check-pers" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
               <label class="form-check-label mx-1" :for="service.id">
                 {{ service.title }}
               </label>
@@ -288,7 +288,7 @@ export default {
             <div class="d-flex flex-wrap">
 
               <div  v-for="service in this.services" :key="service.id" class="d-flex service">
-                <input class="form-check-input mx-1 border-blue" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
+                <input class="form-check-input mx-1 border-blue check-pers" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
                 <label class="form-check-label mx-1" :for="service.id">
                   {{ service.title }}
                 </label>
