@@ -34,7 +34,7 @@ export default {
 </script>
 
 <template>
-  <div class="swiper-container">
+  <div class="swiper-container visible-pc ">
     <swiper
       :slidesPerView="3"
       :navigation="{
@@ -42,7 +42,25 @@ export default {
         prevEl: '.swiper-button-prev',
       }"
       :modules="modules"
-      class="mySwiper"
+      class="mySwipe  "
+    >
+      
+      <swiper-slide v-for="apartment in apartments" :key="apartment.id" ><CardSliderHome :apartment="apartment"/>
+      </swiper-slide>
+      
+    </swiper>
+    <div class="swiper-button-next swiper-button"></div>
+    <div class="swiper-button-prev swiper-button"></div>
+  </div>
+  <div class="swiper-container visible-smartphone">
+    <swiper
+      :slidesPerView="1"
+      :navigation="{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }"
+      :modules="modules"
+      class="mySwipe  "
     >
       
       <swiper-slide v-for="apartment in apartments" :key="apartment.id" ><CardSliderHome :apartment="apartment"/>
@@ -73,5 +91,6 @@ export default {
     color: #146C94;
   }
 }
+
 </style>
 
