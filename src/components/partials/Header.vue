@@ -49,9 +49,11 @@ export default {
                         </ul>
                     </nav>
                 </div>
+
                 <!--Fine Versione desktop  -->
 
                 <!-- Versione Mobile -->
+
                 <div id="app" class="hamburger-menu"> 
                     <div class="container">
                         <span class="float-end">
