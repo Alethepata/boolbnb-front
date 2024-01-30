@@ -34,7 +34,8 @@ export default {
     },
   },
   mounted() {
-    this.getApi(store.apiUrl + 'apartments')
+    this.getApi(store.apiUrl + 'apartments');
+    console.log(store.apartments);
     store.position = '';
   }
 
@@ -48,7 +49,7 @@ export default {
   <div class="my-container">
     <h2>Appartamenti Sponsorizzati</h2>
     <div class="container p-3 ">
-    <SlideCard/>
+    <SlideCard :apartments="store.apartments"/>
   </div>
   </div>
   
