@@ -106,9 +106,9 @@ export default {
 <template>
   <div class="container">
     <h2 class="my-4">{{ apartment.title }}</h2>
-    <div class="d-flex">
+    <div class="left-cont">
 
-      <div class="image me-4" :style="`background-image: url(${apartment.img});`"></div>
+      <div class="image" :style="`background-image: url(${apartment.img});`"></div>
       
       <div class="body-detail">
         
@@ -133,7 +133,6 @@ export default {
 
     </div>
     <div>
-
       <div class="card-form">  
 
         <Loader v-if="isLoaded"/>
@@ -192,7 +191,7 @@ export default {
 
 
     </div>
-    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -201,16 +200,6 @@ export default {
 .container{
   padding-top: 100px;
 
-.image {
-  width: 800px;
-  height: 550px;
-  border-radius: 10px;
-  background-position: center;
-  background-size: cover;
-  border: 1px solid lightgray;
-  box-shadow: 0px 0px 10px 0px lightgray;
-}
-
 .body-detail{
   height: 550px;
   display: flex;
@@ -218,9 +207,12 @@ export default {
   justify-content: space-between;
 }
 h6,
-h2,
 h3 {
   color: #146C94;
+}
+
+h2 {
+  color: #724D3F;
 }
 
 span{
@@ -232,14 +224,6 @@ ul {
   li {
     color: black;
   }
-}
-
-.map{
-  width: 500px;
-  height: 300px;
-  border-radius: 10px;
-  border: 1px solid lightgray;
-  box-shadow: 0px 0px 10px 0px lightgray;
 }
 
 .card-form{
@@ -258,13 +242,8 @@ ul {
 
   .border-blue {
       border: 1px solid #146C94;
-    }
-
-  .btn-blue{
-    background-color: #146C94;
   }
 }
-
 }
 
 
