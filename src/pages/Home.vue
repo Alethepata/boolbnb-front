@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     this.getApi(store.apiUrl + 'apartments');
-    console.log(store.apartments);
+    // console.log(store.apartments);
     store.position = '';
   }
 

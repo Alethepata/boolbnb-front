@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     GetLatLon(){
-      
-      if(store.position === undefined){
+      console.log(store.position);
+      if(store.position === undefined || store.position === '' || store.position === null){
         this.isSearch = true;
         this.isLoaded = false;
         this.isError = true;
@@ -58,10 +58,10 @@ Search() {
   let apartmentsSponsor = [];
   let apartmentsNotSponsor = [];
   let apartments = [];
-  console.log('ho lanciato search()');
+  // console.log('ho lanciato search()');
   axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
     .then(res => {
-      console.log('search() Success');
+      // console.log('search() Success');
       this.isLoaded = false;
 
       // this.apartmentsFiltred = res.data.filtredApartments;
@@ -70,14 +70,13 @@ Search() {
       apartmentsNotSponsor = this.filterNotSponsor(apartments);
       
       this.apartmentsFiltred = apartmentsSponsor.concat(apartmentsNotSponsor);
-      console.log(this.apartmentsFiltred);
+      // console.log(this.apartmentsFiltred);
 
-      // Controlla se ci sono risultati
-      // if (this.apartmentsFiltred.length === 0) {
-      //   this.isError = true;
-      // } else {
-      //   this.isError = false;
-      // }
+      if (this.apartmentsFiltred.length === 0) {
+        this.isError = true;
+      } else {
+        this.isError = false;
+      }
     })
     .catch(error => {
       console.log('Search() failed');
@@ -170,6 +169,7 @@ return arrayFiltered;
 
   },
   mounted(){
+    console.log(store.position);
     this.getServices();
     const apartments = store.apartmentsFounded;
     const isError = store.apiError;
@@ -236,7 +236,7 @@ return arrayFiltered;
           </div>
 
           <div class="col-4 pt-5 btn-desktop">
-            <button class="btn btn-outline-primary btn-blue" type="submit" @click="this.GetLatLon()">Cerca</button>
+            <button class="btn btn-outline-primary btn-blue" @click="this.GetLatLon()">Cerca</button>
           </div>
     
 
