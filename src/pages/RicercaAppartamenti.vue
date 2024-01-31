@@ -82,7 +82,7 @@ export default {
         this.requestServices.push(id);
       }
       this.Search();
-      console.log(this.requestServices);
+      // console.log(this.requestServices);
     },
     getApi() {
             const search = store.position.trim();
@@ -148,7 +148,7 @@ export default {
       this.apartmentsFiltred = apartments;
       this.isError = isError;
     }
-    this.GetLatLon();
+    // this.GetLatLon();
   }
 }
 </script>
@@ -234,9 +234,9 @@ export default {
     </div>
 
     </div>
-     <!--Fine Versione Desktop  -->
+    <!--Fine Versione Desktop  -->
 
-     <div class="container-fluid results-container my-5" v-if="isSearch">
+    <div class="container-fluid results-container my-5" v-if="isSearch">
       
       <h2 class="text-center mb-5">Risultati</h2>
       
