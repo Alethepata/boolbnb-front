@@ -39,7 +39,7 @@ export default {
                                 <router-link :to="{name: 'ricerca'}">Ricerca avanzata</router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'contatti'}">Contatti</router-link>
+                                <router-link :to="{name: 'contatti'}">Chi siamo</router-link>
                             </li>
                             <li class="mx-4">
                                 <!-- <router-link :to="{name: 'accedi'}">Accedi</router-link> -->
