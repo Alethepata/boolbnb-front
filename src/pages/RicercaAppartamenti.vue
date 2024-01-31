@@ -36,7 +36,7 @@ export default {
         this.position = store.position;
           axios.get(store.tomTomApiUrl + encodeURIComponent(this.position) + '.json?key=' + store.tomTomApiKey)
           .then(res =>{
-            // console.log('Sto prendendo le coordinate');
+            console.log('Sto prendendo le coordinate');
             this.latitude = res.data.results[0].position.lat;
             this.longitude = res.data.results[0].position.lon;
             // console.log(res.data.results,this.latitude,this.longitude);
@@ -45,25 +45,32 @@ export default {
 },
 
 
-    Search(){
-      axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
-        .then(res =>{
-          this.isLoaded = false;
-          // console.log('Search() success');
-          this.apartmentsFiltred = res.data.filtredApartments;
-          console.log(this.apartmentsFiltred);
-          if(this.apartmentsFiltred.length == 0){
-            this.isError = true;
-          }else{
-            this.isError = false;
-          }
-        })
-        .catch(error=>{
-          this.isLoaded = false;
-          this.isError = true;
-          this.apartmentsFiltred = [];
-        });
+Search() {
+  console.log('ho lanciato search()');
+  axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
+    .then(res => {
+      this.isLoaded = false;
+      console.log('Search() success',res.data);
 
+      //Ordina gli appartamenti in base alla sponsorizzazione e distanza
+      this.apartmentsFiltred = res.data.filtredApartments.sort((a, b) => {
+        
+      });
+
+      console.log(this.apartmentsFiltred);
+
+      // Controlla se ci sono risultati
+      if (this.apartmentsFiltred.length === 0) {
+        this.isError = true;
+      } else {
+        this.isError = false;
+      }
+    })
+    .catch(error => {
+      this.isLoaded = false;
+      this.isError = true;
+      this.apartmentsFiltred = [];
+    });
 },
 
     getServices(){

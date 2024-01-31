@@ -114,9 +114,11 @@ export default {
         
         <div>
           <h3>Dettagli</h3>
-          <span class="mx-1"><i class="fas fa-house-user"></i> {{ apartment.rooms }}</span>
-          <span class="mx-1"><i class="fa-solid fa-bath"></i> {{ apartment.bathrooms }}</span>
-          <span class="mx-1"><i class="fa-solid fa-bed"></i> {{ apartment.beds }}</span>
+          <span class="mx-1">&#128107; {{ apartment.rooms }}</span>
+          <span class="mx-1">&#128705; {{ apartment.bathrooms }}</span>
+          <span class="mx-1">&#128716; {{ apartment.beds }}</span>
+          <span class="mx-1">&#127960; {{ apartment.square_meters }}m²</span>
+          
 
           <h6 class="mt-3">Servizi aggiuntivi:</h6>
           <p>{{ servicesList }}</p>
