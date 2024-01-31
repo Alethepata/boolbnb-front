@@ -77,7 +77,7 @@ export default {
                                     <router-link :to="{name: 'ricerca'}" @click.prevent="showOffcanvasMenu()">Ricerca avanzata</router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{name: 'contatti'}" @click.prevent="showOffcanvasMenu()">Contatti</router-link>
+                                    <router-link :to="{name: 'contatti'}" @click.prevent="showOffcanvasMenu()">Chi siamo</router-link>
                                 </li>
                                 <li>
                                     <a href="http://127.0.0.1:8000/admin">Area Riservata</a>
