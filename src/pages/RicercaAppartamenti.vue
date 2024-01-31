@@ -161,7 +161,7 @@ export default {
 
       <h1>Ricerca Avanzata</h1>
 
-      <div class="high-filter d-flex ">
+      <div class="high-filter">
 
         <div class="filter-side my-4">
 
@@ -204,7 +204,7 @@ export default {
   
           </div>
 
-          <div class="col-4 pt-5">
+          <div class="col-4 pt-5 btn-desktop">
             <button class="btn btn-outline-primary btn-blue" type="submit" @click="this.GetLatLon()">Cerca</button>
           </div>
     
@@ -229,83 +229,13 @@ export default {
         </div>
       
       </div>
+      <div class="col-4 pt-5 btn-mobile">
+        <button class="btn btn-m" type="submit" @click="this.GetLatLon()">Cerca</button>
+    </div>
 
     </div>
      <!--Fine Versione Desktop  -->
 
-     <!-- Versione Mobile  -->
-
-    <div class="main-box-m mt-5">
-
-        <h1>Ricerca Avanzata</h1>
-
-        <div class="high-filter">
-
-          <div class="filter-side-m">
-
-            <div class="col inputSearch">
-              <label for="search">Dove?</label>
-              <input
-                id="search"
-                class="form-control me-2 border-blue"
-                type="search"
-                placeholder="Cerca"
-                aria-label="Search"
-                @keyup = 'this.getApi()'
-                list="countrydata"
-                autocomplete="off"
-                v-model="store.position">
-
-              <ul id="autocompleteList"
-                  class="list-group">
-              </ul>
-            </div>
-
-            <div class="col-m pt-3">
-              <label for="rangekm">Raggio di ricerca (Km)</label>
-              <input type="text" class="form-control select border-none" id="rangekm" v-model="range" readonly>
-              <input type="range" class="form-range custom-range" min="5" max="40" step="5" id="rangekm" v-model="range">
-            </div>
-
-            <div class="col-m pt-3">
-              <label for="beds">Numero di Letti</label>
-              <input type="text" class="form-control select border-none" id="beds" v-model="beds" readonly>
-              <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="beds" v-model="beds">
-            </div>
-
-            <div class="col-m pt-3">
-              <label for="rooms">Numero di Stanze</label>
-              <input type="text" class="form-control select border-none" id="rooms" v-model="rooms" readonly>
-              <input type="range" class="form-range custom-range" min="0" max="20" step="1" id="rooms" v-model="rooms">
-            </div>
-
-          </div>
-
-          <div class="service-side-m">
-
-            <h5 class="my-3">Servizi aggiuntivi:</h5>
-
-            <div class="d-flex flex-wrap">
-
-              <div  v-for="service in this.services" :key="service.id" class="d-flex service">
-                <input class="form-check-input mx-1 border-blue check-pers" type="checkbox" :value="service.id" :id="service.id" @click="saveServices(service.id)">
-                <label class="form-check-label mx-1" :for="service.id">
-                  {{ service.title }}
-                </label>
-              </div>
-
-            </div>
-        </div>
-    <div class="col-4 pt-5">
-        <button class="btn btn-m" type="submit" @click="this.GetLatLon()">Cerca</button>
-      </div>
-  </div>
-
-</div>
-
-     <!--Fine Versione Mobile  -->
-
-     
      <div class="container-fluid results-container my-5" v-if="isSearch">
       
       <h2 class="text-center mb-5">Risultati</h2>
@@ -338,62 +268,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.container-search{
-  padding-top: 70px;
-  .main-box{
-    h5 {
-      color: black;
-    }
-    background-color: white;
-    border: 2px solid #146C94;
-    border-radius: 30px;
-    padding: 50px;
-  .border-blue {
-      border: 2px solid #146C94;
-    }
-  .inputSearch{
-    position: relative;
-    #autocompleteList{
-              width: 100%;
-              position: absolute;
-              z-index: 999;
-          }
-  }
-  .filter-side {
-    width: 50%;
-    .custom-range::-moz-range-thumb {
-      background: #146C94;
-    }
-    .border-none {
-      border: none;
-    }
 
-    
-    .select {
-      text-align: center;
-      pointer-events: none;
-    }
-
-    button {
-      color: white;
-      border: 2px solid #146C94;
-      &:hover {
-        background-color: #724D3F;
-        color: white;
-      }
-    }
-  }
-
-
-  .service-side {
-    width: 50%;
-    .service {
-      width: 50%;
-    }
-  }
-}
-
-}
 
 
 .results-container{
