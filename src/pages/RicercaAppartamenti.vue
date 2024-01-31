@@ -143,12 +143,13 @@ export default {
     this.getServices();
     const apartments = store.apartmentsFounded;
     const isError = store.apiError;
-    // console.log(apartments,isError);
-    if(apartments != null && isError !=null){
+    console.log(apartments,isError);
+    if(apartments != null && !isError && store.isFromHome){
       this.apartmentsFiltred = apartments;
       this.isError = isError;
+      store.isFromHome = false;
+      this.GetLatLon();
     }
-    // this.GetLatLon();
   }
 }
 </script>

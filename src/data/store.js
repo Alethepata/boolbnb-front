@@ -8,5 +8,6 @@ export const store = reactive({
     latitude: null,
     longitude: null,
     apartmentsFounded: [],
-    apiError: false
+    apiError: false,
+    isFromHome: false,
 });

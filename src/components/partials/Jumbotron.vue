@@ -38,26 +38,30 @@ name: 'Jumbotron',
         Search(){
         axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/')
             .then(res =>{
-            // console.log('Search() success');
-            store.apiError = false;
-            this.isError = store.apiError;
-            store.apartmentsFounded = res.data.filteredApartments;
-            this.filteredApartments = store.apartmentsFounded;
-            // console.log(this.apartmentsFiltred);
-            this.$router.push({
-                name: 'ricerca' // Nome della rotta di destinazione
-                // params: {apartments: this.apartmentsFiltred, isError: this.isError }, // Dati che desideri passare
-            });
+                console.log('Search() success');
+
+                store.apiError = false;
+                this.isError = store.apiError;
+
+                store.apartmentsFounded = res.data.filtredApartments;
+                this.apartmentsFiltred = store.apartmentsFounded;
+
+                store.isFromHome = true;
+
+                // console.log(store.apartmentsFounded);
+
+                this.$router.push({
+                    name: 'ricerca' // Nome della rotta di destinazione
+                });
             })
             .catch(error=>{
-            store.apiError = true;
-            this.isError = store.apiError;
-            store.apartmentsFounded = [];
-            this.filteredApartments = store.apartmentsFounded;
-            this.$router.push({
-                name: 'ricerca' // Nome della rotta di destinazione
-                // params: {apartments: this.apartmentsFiltred, isError: this.isError }, // Dati che desideri passare
-            });
+                store.apiError = true;
+                this.isError = store.apiError;
+                store.apartmentsFounded = [];
+                this.filteredApartments = store.apartmentsFounded;
+                this.$router.push({
+                    name: 'ricerca' // Nome della rotta di destinazione
+                });
             });
         },
         getApi() {
