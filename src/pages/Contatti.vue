@@ -32,7 +32,7 @@ export default {
         </div>
     </div>
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="/public/Manuele.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Manuele Di Gregorio</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
