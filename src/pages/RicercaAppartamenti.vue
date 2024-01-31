@@ -375,10 +375,10 @@ export default {
     }
 
     button {
-      color: #146C94;
+      color: white;
       border: 2px solid #146C94;
       &:hover {
-        background-color: #146C94;
+        background-color: #724D3F;
         color: white;
       }
     }
