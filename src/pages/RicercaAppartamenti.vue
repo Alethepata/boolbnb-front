@@ -46,7 +46,7 @@ export default {
             console.log('Sto prendendo le coordinate');
             this.latitude = res.data.results[0].position.lat;
             this.longitude = res.data.results[0].position.lon;
-            // console.log(res.data.results,this.latitude,this.longitude);
+            console.log(this.latitude,this.longitude);
             this.Search();
           })
       }
@@ -55,31 +55,45 @@ export default {
 
 
 Search() {
+  let apartmentsSponsor = [];
+  let apartmentsNotSponsor = [];
+  let apartments = [];
   console.log('ho lanciato search()');
   axios.get(store.apiUrl + 'apartments/search-apartments/'  + this.latitude + '/' + this.longitude + '/' + this.range + '/' + this.rooms + '/' + this.beds + '/' + this.requestServices)
     .then(res => {
+      console.log('search() Success');
       this.isLoaded = false;
-      console.log('Search() success',res.data);
 
-      //Ordina gli appartamenti in base alla sponsorizzazione e distanza
-      this.apartmentsFiltred = res.data.filtredApartments.sort((a, b) => {
-        
-      });
-
+      // this.apartmentsFiltred = res.data.filtredApartments;
+      apartments = res.data.filtredApartments;
+      apartmentsSponsor = this.filterSponsor(apartments);
+      apartmentsNotSponsor = this.filterNotSponsor(apartments);
+      
+      this.apartmentsFiltred = apartmentsSponsor.concat(apartmentsNotSponsor);
       console.log(this.apartmentsFiltred);
 
       // Controlla se ci sono risultati
-      if (this.apartmentsFiltred.length === 0) {
-        this.isError = true;
-      } else {
-        this.isError = false;
-      }
+      // if (this.apartmentsFiltred.length === 0) {
+      //   this.isError = true;
+      // } else {
+      //   this.isError = false;
+      // }
     })
     .catch(error => {
+      console.log('Search() failed');
       this.isLoaded = false;
       this.isError = true;
       this.apartmentsFiltred = [];
     });
+},
+
+filterSponsor(arrayApt){
+const arrayFiltered = arrayApt.filter(apt => apt.apartment.sponsors.length > 0);
+return arrayFiltered;
+},
+filterNotSponsor(arrayApt){
+const arrayFiltered = arrayApt.filter(apt => apt.apartment.sponsors.length == 0);
+return arrayFiltered;
 },
 
     getServices(){

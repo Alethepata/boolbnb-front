@@ -30,7 +30,10 @@ export default {
           <div class="card mb-4" style="width: 17rem">
             <div class="image">
               <!-- Da sistemare lo sponsor mettere da api il parametro -->
-              <span class="badge">Sponsorizzato</span>
+              <span
+              v-if="object.apartment.sponsors.length > 0 "
+                class="badge">
+                Sponsorizzato</span>
               <img :src="object.apartment.img " :alt="object.apartment.title" />
             </div>
             <div class="card-body p-2">
