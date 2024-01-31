@@ -29,6 +29,13 @@ export default {
   },
   methods: {
     GetLatLon(){
+      
+      if(store.position === undefined){
+        this.isSearch = true;
+        this.isLoaded = false;
+        this.isError = true;
+        
+      }else{
         this.isSearch = true;
         this.isLoaded = true;
         this.latitude = 0;
@@ -42,6 +49,8 @@ export default {
             // console.log(res.data.results,this.latitude,this.longitude);
             this.Search();
           })
+      }
+        
 },
 
 
@@ -150,7 +159,7 @@ Search() {
     this.getServices();
     const apartments = store.apartmentsFounded;
     const isError = store.apiError;
-    console.log(apartments,isError);
+    // console.log(apartments,isError);
     if(apartments != null && !isError && store.isFromHome){
       this.apartmentsFiltred = apartments;
       this.isError = isError;
