@@ -8,7 +8,7 @@ export default {
     <h1 class="credits">Crediti:</h1>
   <div class="container-cont">
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="../../public/Alessia.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Alessia Patanè</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
