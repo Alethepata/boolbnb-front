@@ -10,7 +10,7 @@ export default {
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Patanè Alessia</h5>
+            <h5 class="card-title">Alessia Patanè</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
             <p class="card-text">Classe # 105</p>
         </div>
@@ -18,7 +18,7 @@ export default {
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Correa Davide</h5>
+            <h5 class="card-title">Davide Correa</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
             <p class="card-text">Classe # 105</p>
         </div>
@@ -26,7 +26,7 @@ export default {
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Flammini Leonardo</h5>
+            <h5 class="card-title">Leonardo Flammini</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
             <p class="card-text">Classe # 105</p>
         </div>
@@ -34,7 +34,7 @@ export default {
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Di Gregorio Manuele</h5>
+            <h5 class="card-title">Manuele Di Gregorio</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
             <p class="card-text">Classe # 105</p>
         </div>
@@ -42,7 +42,7 @@ export default {
     <div class="card" style="width: 18rem;">
         <img src="/public/Thomas card.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Bortolotti Thomas</h5>
+            <h5 class="card-title">Thomas Bortolotti</h5>
             <p class="card-text">Junior Full Stack Web Developer</p>
             <p class="card-text">Classe # 105</p>
         </div>
