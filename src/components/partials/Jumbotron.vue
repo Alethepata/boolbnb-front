@@ -166,30 +166,6 @@ name: 'Jumbotron',
             <p>Boolbnb è la tua piattaforma di riferimento per gli affitti brevi. Offriamo una selezione di proprietà uniche e accoglienti che ti faranno sentire a casa, ovunque tu decida di viaggiare.</p>
         </div>
     </div>
-    <div class="background-search-bar-m ">
-        <div class="search-bar-m rounded-5">
-            <div class="bar-m d-flex justify-content-between align-items-center">
-                <input
-                    class="form-control border-0"
-                    type="search"
-                    placeholder="Inserisci l'indirizzo"
-                    id="city"
-                    v-model="store.position"
-                    @keyup = 'this.getApi()'
-                    @keyup.enter="this.GetLatLon()"
-                    autocomplete="off"
-                    list="countrydata">
-                <ul
-                    id='autocompleteList'
-                    class="list-group">
-                </ul>
-                <div class="button">
-                    <button class="btn" type="submit" @click="this.GetLatLon()">&#9740;</button>
-                </div>
-            </div>  
-        </div>
-    </div>
-
   
 </template>
 
@@ -216,61 +192,6 @@ name: 'Jumbotron',
             color: #724D3F;
             font-size: 18px;
         }
-    }
-    
+    }   
 }
-.background-search-bar{
-    position: relative;
-    width: 100%;
-    padding-bottom: 50px;
-}
-
-.search-bar {
-    width: 500px;
-    margin: 0 auto;
-    padding: 10px 10px;
-    border: 1px solid #724D3F;
-    overflow: hidden;
-    background-color: white;
-
-    #autocompleteList{
-        width: 482px;
-        margin: 0 auto;
-        position: absolute;
-        z-index: 999;
-        top: 72px;
-        height: 100%;
-        overflow-y: auto;
-    }
-
-    .bar {
-        input {
-            background-color: rgba(255, 255, 255, 0);
-            &::placeholder{
-                color: #724D3F;
-            }
-            &:focus{
-                box-shadow: none;            
-                &::placeholder{
-                color: #146C94;
-            }
-            }
-
-        }
-        button {
-            padding: 0;
-            margin: 0;
-            background-color: #146C94;
-            color: white;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            transform: scaleY(-1);
-            font-size: 31px;
-            border-radius: 50%;
-        }
-    }
-
- }
 </style>
